@@ -57,17 +57,23 @@ namespace VntRoute
             }
             catch (Exception ex)
             {
+                throw ex;
             }
         }
 
         private void FrmCliente_Load(object sender, EventArgs e)
         {
             model get = new model();
-            List<DtoCidade> ListCidades = get.getAllCidades();
+            List<DtoCidadeMap> ListCidades = get.getAllCidades();
             comboBox1.DataSource = null;
             comboBox1.ValueMember = "id";
             comboBox1.DisplayMember = "nome";
             comboBox1.DataSource = ListCidades;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

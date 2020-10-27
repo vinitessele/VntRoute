@@ -137,7 +137,7 @@
             this.btnConsultar.Location = new System.Drawing.Point(340, 130);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(93, 30);
-            this.btnConsultar.TabIndex = 11;
+            this.btnConsultar.TabIndex = 5;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = false;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
@@ -157,7 +157,7 @@
             this.textBoxLongitude.Location = new System.Drawing.Point(181, 136);
             this.textBoxLongitude.Name = "textBoxLongitude";
             this.textBoxLongitude.Size = new System.Drawing.Size(153, 20);
-            this.textBoxLongitude.TabIndex = 9;
+            this.textBoxLongitude.TabIndex = 4;
             // 
             // label4
             // 
@@ -174,7 +174,7 @@
             this.textBoxLatitude.Location = new System.Drawing.Point(22, 136);
             this.textBoxLatitude.Name = "textBoxLatitude";
             this.textBoxLatitude.Size = new System.Drawing.Size(153, 20);
-            this.textBoxLatitude.TabIndex = 7;
+            this.textBoxLatitude.TabIndex = 3;
             // 
             // label3
             // 
@@ -190,7 +190,7 @@
             this.textBoxEndereco.Location = new System.Drawing.Point(22, 90);
             this.textBoxEndereco.Name = "textBoxEndereco";
             this.textBoxEndereco.Size = new System.Drawing.Size(271, 20);
-            this.textBoxEndereco.TabIndex = 5;
+            this.textBoxEndereco.TabIndex = 2;
             // 
             // label1
             // 

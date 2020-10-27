@@ -25,6 +25,14 @@ namespace VntRoute
             }
         }
 
+        public void DeleteMotorista(string id)
+        {
+            Context db = new Context();
+            DtoMotorista e = db.motorista.FirstOrDefault(p => p.id == int.Parse(id));
+            db.motorista.Remove(e);
+            db.SaveChanges();
+        }
+
         public List<DtoDestino> getListaDestinos()
         {
             Context db = new Context();
@@ -64,6 +72,31 @@ namespace VntRoute
             db.SaveChanges();
         }
 
+        internal void setMotorista(DtoMotorista c)
+        {
+            Context db = new Context();
+
+            db.motorista.Add(c);
+            db.SaveChanges();
+        }
+
+        internal void AlteraMotorista(DtoMotorista m)
+        {
+            Context db = new Context();
+            DtoMotorista c = db.motorista.FirstOrDefault(p => p.id == m.id);
+
+            c.nome = m.nome;
+            c.endereco = m.endereco;
+            c.telefone = m.telefone;
+            c.email = m.email;
+            c.cpfcnpj = m.cpfcnpj;
+            c.ierg = m.ierg;
+            c.id_cidade = m.id_cidade;
+            c.observacoes = m.observacoes;
+            c.complemento = m.complemento;
+            db.SaveChanges();
+        }
+
         public List<DtoDestino> getListaDestinosLimit(List<DtoBairro> listBairro)
         {
             Context db = new Context();
@@ -77,10 +110,22 @@ namespace VntRoute
             return listdestinos;
         }
 
-        internal List<DtoCidade> getAllCidades()
+        internal List<DtoCidadeMap> getAllCidades()
         {
             Context db = new Context();
-            return db.cidade.ToList() ;
+
+            var q = (from c in db.cidade
+                    join e in db.estado
+                    on c.id_estado equals e.id into estado
+                    from e in estado.DefaultIfEmpty()
+                    select new DtoCidadeMap()
+                    {
+                        id = c.id,
+                        nome = c.nome+"/"+e.uf,
+                        id_estado = c.id_estado
+                    }).OrderBy(p => p.nome);
+
+            return q.ToList();
         }
 
         internal void AlteraCidade(DtoCidade d)

@@ -142,6 +142,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DtoBairro.cs" />
+    <Compile Include="DtoLancamento .cs" />
+    <Compile Include="DtoCidadeMap.cs" />
     <Compile Include="DtoCidade.cs" />
     <Compile Include="DtoCliente.cs" />
     <Compile Include="DtoEmpresa.cs" />
@@ -221,6 +223,12 @@
     <Compile Include="FrmVeiculo.Designer.cs">
       <DependentUpon>FrmVeiculo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lançamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lançamento.Designer.cs">
+      <DependentUpon>Lançamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -256,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVeiculo.resx">
       <DependentUpon>FrmVeiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lançamento.resx">
+      <DependentUpon>Lançamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

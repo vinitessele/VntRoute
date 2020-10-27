@@ -77,7 +77,7 @@
             this.textBoxID.Location = new System.Drawing.Point(22, 42);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(56, 20);
-            this.textBoxID.TabIndex = 18;
+            this.textBoxID.TabIndex = 1;
             // 
             // btnExcluir
             // 
@@ -88,7 +88,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(379, 241);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(93, 30);
-            this.btnExcluir.TabIndex = 16;
+            this.btnExcluir.TabIndex = 9;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -103,7 +103,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(280, 241);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 30);
-            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -117,7 +117,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(181, 241);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(93, 30);
-            this.btnSalvar.TabIndex = 14;
+            this.btnSalvar.TabIndex = 7;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -137,7 +137,7 @@
             this.textBoxCodEstado.Location = new System.Drawing.Point(356, 42);
             this.textBoxCodEstado.Name = "textBoxCodEstado";
             this.textBoxCodEstado.Size = new System.Drawing.Size(87, 20);
-            this.textBoxCodEstado.TabIndex = 7;
+            this.textBoxCodEstado.TabIndex = 6;
             // 
             // label3
             // 
@@ -153,7 +153,7 @@
             this.textBoxUF.Location = new System.Drawing.Point(296, 42);
             this.textBoxUF.Name = "textBoxUF";
             this.textBoxUF.Size = new System.Drawing.Size(56, 20);
-            this.textBoxUF.TabIndex = 5;
+            this.textBoxUF.TabIndex = 4;
             // 
             // label1
             // 
@@ -168,7 +168,7 @@
             this.textBoxNome.Location = new System.Drawing.Point(82, 42);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(211, 20);
-            this.textBoxNome.TabIndex = 1;
+            this.textBoxNome.TabIndex = 2;
             // 
             // FrmEstado
             // 

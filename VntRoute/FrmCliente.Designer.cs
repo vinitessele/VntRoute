@@ -86,6 +86,7 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro Empresa";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label10
             // 
@@ -102,7 +103,7 @@
             this.comboBox1.Location = new System.Drawing.Point(296, 90);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(229, 21);
-            this.comboBox1.TabIndex = 28;
+            this.comboBox1.TabIndex = 6;
             // 
             // label9
             // 
@@ -118,7 +119,7 @@
             this.textBoxRG.Location = new System.Drawing.Point(416, 42);
             this.textBoxRG.Name = "textBoxRG";
             this.textBoxRG.Size = new System.Drawing.Size(114, 20);
-            this.textBoxRG.TabIndex = 26;
+            this.textBoxRG.TabIndex = 4;
             // 
             // label8
             // 
@@ -134,7 +135,7 @@
             this.textBoxCPF.Location = new System.Drawing.Point(296, 42);
             this.textBoxCPF.Name = "textBoxCPF";
             this.textBoxCPF.Size = new System.Drawing.Size(114, 20);
-            this.textBoxCPF.TabIndex = 24;
+            this.textBoxCPF.TabIndex = 3;
             // 
             // label6
             // 
@@ -150,7 +151,7 @@
             this.textBoxObservacao.Location = new System.Drawing.Point(22, 207);
             this.textBoxObservacao.Name = "textBoxObservacao";
             this.textBoxObservacao.Size = new System.Drawing.Size(271, 20);
-            this.textBoxObservacao.TabIndex = 22;
+            this.textBoxObservacao.TabIndex = 10;
             // 
             // label2
             // 
@@ -166,7 +167,7 @@
             this.textBoxComplemento.Location = new System.Drawing.Point(22, 168);
             this.textBoxComplemento.Name = "textBoxComplemento";
             this.textBoxComplemento.Size = new System.Drawing.Size(271, 20);
-            this.textBoxComplemento.TabIndex = 20;
+            this.textBoxComplemento.TabIndex = 9;
             // 
             // label7
             // 
@@ -182,7 +183,7 @@
             this.textBoxID.Location = new System.Drawing.Point(22, 42);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(56, 20);
-            this.textBoxID.TabIndex = 18;
+            this.textBoxID.TabIndex = 1;
             // 
             // btnExcluir
             // 
@@ -193,7 +194,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(668, 367);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(93, 30);
-            this.btnExcluir.TabIndex = 16;
+            this.btnExcluir.TabIndex = 13;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -208,7 +209,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(569, 367);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 30);
-            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.TabIndex = 12;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -222,7 +223,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(470, 367);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(93, 30);
-            this.btnSalvar.TabIndex = 14;
+            this.btnSalvar.TabIndex = 11;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -241,7 +242,7 @@
             this.textBoxEmail.Location = new System.Drawing.Point(157, 129);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(271, 20);
-            this.textBoxEmail.TabIndex = 9;
+            this.textBoxEmail.TabIndex = 8;
             // 
             // label4
             // 
@@ -288,7 +289,7 @@
             this.textBoxNome.Location = new System.Drawing.Point(82, 42);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(211, 20);
-            this.textBoxNome.TabIndex = 1;
+            this.textBoxNome.TabIndex = 2;
             // 
             // FrmCliente
             // 
