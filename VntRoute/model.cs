@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -33,6 +31,39 @@ namespace VntRoute
             return db.destino.Where(p => p.status == "I").ToList();
         }
 
+        public void DeleteCliente(string id)
+        {
+            Context db = new Context();
+            DtoCliente e = db.cliente.FirstOrDefault(p => p.id == int.Parse(id));
+            db.cliente.Remove(e);
+            db.SaveChanges();
+        }
+
+        public void setCliente(DtoCliente c)
+        {
+            Context db = new Context();
+
+            db.cliente.Add(c);
+            db.SaveChanges();
+        }
+
+        public void AlteraCliente(DtoCliente cli)
+        {
+            Context db = new Context();
+            DtoCliente c = db.cliente.FirstOrDefault(p => p.id == cli.id);
+
+            c.nome = cli.nome;
+            c.endereco = cli.endereco;
+            c.telefone = cli.telefone;
+            c.email = cli.email;
+            c.cpfcnpj = cli.cpfcnpj;
+            c.ierg = cli.ierg;
+            c.id_cidade = cli.id_cidade;
+            c.observacoes = cli.observacoes;
+            c.complemento = cli.complemento;
+            db.SaveChanges();
+        }
+
         public List<DtoDestino> getListaDestinosLimit(List<DtoBairro> listBairro)
         {
             Context db = new Context();
@@ -44,6 +75,67 @@ namespace VntRoute
                 listdestinos.AddRange(listdestino);
             }
             return listdestinos;
+        }
+
+        internal List<DtoCidade> getAllCidades()
+        {
+            Context db = new Context();
+            return db.cidade.ToList() ;
+        }
+
+        internal void AlteraCidade(DtoCidade d)
+        {
+            try
+            {
+                Context db = new Context();
+                DtoCidade e = db.cidade.FirstOrDefault(p => p.id == d.id);
+                e.id = d.id;
+                e.nome = d.nome;
+                e.id_estado = d.id_estado;
+                e.codigoibge = d.codigoibge;
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        internal void DeleteCidade(string id)
+        {
+            Context db = new Context();
+            DtoCidade e = db.cidade.FirstOrDefault(p => p.id == int.Parse(id));
+            db.cidade.Remove(e);
+            db.SaveChanges();
+        }
+
+        public List<DtoEstado> getAllEstados()
+        {
+            Context db = new Context();
+            var q = db.estado.ToList();
+            return q.ToList();
+        }
+
+        public void setCidade(DtoCidade d)
+        {
+            try
+            {
+                Context db = new Context();
+                db.cidade.Add(d);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        internal void DeleteEstado(int id)
+        {
+            Context db = new Context();
+            DtoEstado e = db.estado.FirstOrDefault(p => p.id == id);
+            db.estado.Remove(e);
+            db.SaveChanges();
         }
 
         internal void AlteraEstado(DtoEstado d)
@@ -58,7 +150,9 @@ namespace VntRoute
                 e.codigouf = d.codigouf;
                 db.SaveChanges();
             }
-            catch () {
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -169,7 +263,7 @@ namespace VntRoute
                 for (int i = 0; i < lista.Count; i++)
                 {
                     rota += "|" + lista[i].endereco;
-                    if (i == 24 || i == (lista.Count-1))
+                    if (i == 24 || i == (lista.Count - 1))
                     {
                         RetornoGoogle.AddRange(RouteGoogle(origem, destino, rota));
                         rota = string.Empty;
@@ -272,7 +366,7 @@ namespace VntRoute
             }
         }
         #endregion
-        
+
         public List<DtoDestino> getListDestino()
         {
             Context db = new Context();

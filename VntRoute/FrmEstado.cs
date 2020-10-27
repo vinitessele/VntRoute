@@ -21,5 +21,40 @@ namespace VntRoute
         {
             this.Close();
         }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                model set = new model();
+                DtoEstado d = new DtoEstado();
+                d.nome = textBoxNome.Text;
+                d.uf = textBoxUF.Text;
+                d.codigouf =int.Parse(textBoxCodEstado.Text);
+                if (textBoxID.Text == string.Empty)
+                    set.setEstado(d);
+                else
+                    set.AlteraEstado(d);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                model delete = new model();
+                delete.DeleteEstado(int.Parse(textBoxID.Text));
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

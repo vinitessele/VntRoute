@@ -35,9 +35,9 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxLatitude = new System.Windows.Forms.TextBox();
+            this.textBoxCodEstado = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxEndereco = new System.Windows.Forms.TextBox();
+            this.textBoxUF = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
@@ -51,9 +51,9 @@
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnSalvar);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBoxLatitude);
+            this.groupBox1.Controls.Add(this.textBoxCodEstado);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBoxEndereco);
+            this.groupBox1.Controls.Add(this.textBoxUF);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxNome);
             this.groupBox1.Location = new System.Drawing.Point(12, 28);
@@ -91,6 +91,7 @@
             this.btnExcluir.TabIndex = 16;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnCancelar
             // 
@@ -119,6 +120,7 @@
             this.btnSalvar.TabIndex = 14;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // label4
             // 
@@ -129,13 +131,13 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Código do estado";
             // 
-            // textBoxLatitude
+            // textBoxCodEstado
             // 
-            this.textBoxLatitude.Enabled = false;
-            this.textBoxLatitude.Location = new System.Drawing.Point(356, 42);
-            this.textBoxLatitude.Name = "textBoxLatitude";
-            this.textBoxLatitude.Size = new System.Drawing.Size(87, 20);
-            this.textBoxLatitude.TabIndex = 7;
+            this.textBoxCodEstado.Enabled = false;
+            this.textBoxCodEstado.Location = new System.Drawing.Point(356, 42);
+            this.textBoxCodEstado.Name = "textBoxCodEstado";
+            this.textBoxCodEstado.Size = new System.Drawing.Size(87, 20);
+            this.textBoxCodEstado.TabIndex = 7;
             // 
             // label3
             // 
@@ -146,12 +148,12 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "UF";
             // 
-            // textBoxEndereco
+            // textBoxUF
             // 
-            this.textBoxEndereco.Location = new System.Drawing.Point(296, 42);
-            this.textBoxEndereco.Name = "textBoxEndereco";
-            this.textBoxEndereco.Size = new System.Drawing.Size(56, 20);
-            this.textBoxEndereco.TabIndex = 5;
+            this.textBoxUF.Location = new System.Drawing.Point(296, 42);
+            this.textBoxUF.Name = "textBoxUF";
+            this.textBoxUF.Size = new System.Drawing.Size(56, 20);
+            this.textBoxUF.TabIndex = 5;
             // 
             // label1
             // 
@@ -192,9 +194,9 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxLatitude;
+        private System.Windows.Forms.TextBox textBoxCodEstado;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxEndereco;
+        private System.Windows.Forms.TextBox textBoxUF;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxNome;
     }

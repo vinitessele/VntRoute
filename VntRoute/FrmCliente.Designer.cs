@@ -115,7 +115,6 @@
             // 
             // textBoxRG
             // 
-            this.textBoxRG.Enabled = false;
             this.textBoxRG.Location = new System.Drawing.Point(416, 42);
             this.textBoxRG.Name = "textBoxRG";
             this.textBoxRG.Size = new System.Drawing.Size(114, 20);
@@ -132,7 +131,6 @@
             // 
             // textBoxCPF
             // 
-            this.textBoxCPF.Enabled = false;
             this.textBoxCPF.Location = new System.Drawing.Point(296, 42);
             this.textBoxCPF.Name = "textBoxCPF";
             this.textBoxCPF.Size = new System.Drawing.Size(114, 20);
@@ -149,7 +147,6 @@
             // 
             // textBoxObservacao
             // 
-            this.textBoxObservacao.Enabled = false;
             this.textBoxObservacao.Location = new System.Drawing.Point(22, 207);
             this.textBoxObservacao.Name = "textBoxObservacao";
             this.textBoxObservacao.Size = new System.Drawing.Size(271, 20);
@@ -166,10 +163,9 @@
             // 
             // textBoxComplemento
             // 
-            this.textBoxComplemento.Enabled = false;
             this.textBoxComplemento.Location = new System.Drawing.Point(22, 168);
             this.textBoxComplemento.Name = "textBoxComplemento";
-            this.textBoxComplemento.Size = new System.Drawing.Size(190, 20);
+            this.textBoxComplemento.Size = new System.Drawing.Size(271, 20);
             this.textBoxComplemento.TabIndex = 20;
             // 
             // label7
@@ -200,6 +196,7 @@
             this.btnExcluir.TabIndex = 16;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnCancelar
             // 
@@ -228,6 +225,7 @@
             this.btnSalvar.TabIndex = 14;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // label5
             // 
@@ -240,7 +238,6 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Enabled = false;
             this.textBoxEmail.Location = new System.Drawing.Point(157, 129);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(271, 20);
@@ -257,7 +254,6 @@
             // 
             // textBoxTelefone
             // 
-            this.textBoxTelefone.Enabled = false;
             this.textBoxTelefone.Location = new System.Drawing.Point(22, 129);
             this.textBoxTelefone.Name = "textBoxTelefone";
             this.textBoxTelefone.Size = new System.Drawing.Size(129, 20);
@@ -303,6 +299,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmCliente";
             this.Text = "Cadastro de cliente";
+            this.Load += new System.EventHandler(this.FrmCliente_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

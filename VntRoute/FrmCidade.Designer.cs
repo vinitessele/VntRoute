@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBoxLatitude = new System.Windows.Forms.TextBox();
+            this.textBoxCodIbge = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnSalvar);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBoxLatitude);
+            this.groupBox1.Controls.Add(this.textBoxCodIbge);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxNome);
@@ -62,6 +63,14 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro Empresa";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(300, 40);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 20;
             // 
             // label7
             // 
@@ -91,6 +100,7 @@
             this.btnExcluir.TabIndex = 16;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnCancelar
             // 
@@ -119,6 +129,7 @@
             this.btnSalvar.TabIndex = 14;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // label4
             // 
@@ -129,13 +140,12 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Código IBGE";
             // 
-            // textBoxLatitude
+            // textBoxCodIbge
             // 
-            this.textBoxLatitude.Enabled = false;
-            this.textBoxLatitude.Location = new System.Drawing.Point(22, 90);
-            this.textBoxLatitude.Name = "textBoxLatitude";
-            this.textBoxLatitude.Size = new System.Drawing.Size(87, 20);
-            this.textBoxLatitude.TabIndex = 7;
+            this.textBoxCodIbge.Location = new System.Drawing.Point(22, 90);
+            this.textBoxCodIbge.Name = "textBoxCodIbge";
+            this.textBoxCodIbge.Size = new System.Drawing.Size(87, 20);
+            this.textBoxCodIbge.TabIndex = 7;
             // 
             // label3
             // 
@@ -161,14 +171,6 @@
             this.textBoxNome.Size = new System.Drawing.Size(211, 20);
             this.textBoxNome.TabIndex = 1;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(300, 40);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 20;
-            // 
             // FrmCidade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,6 +180,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmCidade";
             this.Text = "Cadastro de cidade";
+            this.Load += new System.EventHandler(this.FrmCidade_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -194,9 +197,10 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxLatitude;
+        private System.Windows.Forms.TextBox textBoxCodIbge;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxNome;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
