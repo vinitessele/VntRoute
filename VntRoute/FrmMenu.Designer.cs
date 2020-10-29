@@ -41,10 +41,9 @@
             this.lançamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarArquivoDeRotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.bntVeiculo = new System.Windows.Forms.Button();
             this.BtnCliente = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
@@ -83,6 +82,8 @@
             // 
             // parametrosToolStripMenuItem
             // 
+            this.parametrosToolStripMenuItem.BackColor = System.Drawing.Color.Green;
+            this.parametrosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.parametrosToolStripMenuItem.Name = "parametrosToolStripMenuItem";
             this.parametrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.parametrosToolStripMenuItem.Text = "Empresa";
@@ -90,6 +91,8 @@
             // 
             // destinosToolStripMenuItem
             // 
+            this.destinosToolStripMenuItem.BackColor = System.Drawing.Color.Green;
+            this.destinosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.destinosToolStripMenuItem.Name = "destinosToolStripMenuItem";
             this.destinosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.destinosToolStripMenuItem.Text = "Destinos";
@@ -97,6 +100,8 @@
             // 
             // motoristasToolStripMenuItem
             // 
+            this.motoristasToolStripMenuItem.BackColor = System.Drawing.Color.Green;
+            this.motoristasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.motoristasToolStripMenuItem.Name = "motoristasToolStripMenuItem";
             this.motoristasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.motoristasToolStripMenuItem.Text = "Motoristas";
@@ -104,6 +109,8 @@
             // 
             // clientesToolStripMenuItem
             // 
+            this.clientesToolStripMenuItem.BackColor = System.Drawing.Color.Green;
+            this.clientesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
@@ -111,6 +118,8 @@
             // 
             // cidadeToolStripMenuItem
             // 
+            this.cidadeToolStripMenuItem.BackColor = System.Drawing.Color.Green;
+            this.cidadeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.cidadeToolStripMenuItem.Name = "cidadeToolStripMenuItem";
             this.cidadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cidadeToolStripMenuItem.Text = "Cidade";
@@ -118,6 +127,8 @@
             // 
             // estadoToolStripMenuItem
             // 
+            this.estadoToolStripMenuItem.BackColor = System.Drawing.Color.Green;
+            this.estadoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.estadoToolStripMenuItem.Name = "estadoToolStripMenuItem";
             this.estadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.estadoToolStripMenuItem.Text = "Estado";
@@ -125,6 +136,8 @@
             // 
             // veículoToolStripMenuItem
             // 
+            this.veículoToolStripMenuItem.BackColor = System.Drawing.Color.Green;
+            this.veículoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.veículoToolStripMenuItem.Name = "veículoToolStripMenuItem";
             this.veículoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.veículoToolStripMenuItem.Text = "Veículo";
@@ -147,58 +160,63 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnImport);
+            this.panel1.Controls.Add(this.bntVeiculo);
             this.panel1.Controls.Add(this.BtnCliente);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(938, 61);
+            this.panel1.Size = new System.Drawing.Size(938, 96);
             this.panel1.TabIndex = 11;
+            // 
+            // btnImport
+            // 
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
+            this.btnImport.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnImport.Location = new System.Drawing.Point(190, 3);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(85, 87);
+            this.btnImport.TabIndex = 2;
+            this.btnImport.Text = "Importar";
+            this.btnImport.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // bntVeiculo
+            // 
+            this.bntVeiculo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.bntVeiculo.Image = ((System.Drawing.Image)(resources.GetObject("bntVeiculo.Image")));
+            this.bntVeiculo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.bntVeiculo.Location = new System.Drawing.Point(101, 3);
+            this.bntVeiculo.Name = "bntVeiculo";
+            this.bntVeiculo.Size = new System.Drawing.Size(85, 87);
+            this.bntVeiculo.TabIndex = 1;
+            this.bntVeiculo.Text = "Veículo";
+            this.bntVeiculo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.bntVeiculo.UseVisualStyleBackColor = true;
+            this.bntVeiculo.Click += new System.EventHandler(this.bntVeiculo_Click);
             // 
             // BtnCliente
             // 
+            this.BtnCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnCliente.Image = ((System.Drawing.Image)(resources.GetObject("BtnCliente.Image")));
+            this.BtnCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BtnCliente.Location = new System.Drawing.Point(12, 3);
             this.BtnCliente.Name = "BtnCliente";
-            this.BtnCliente.Size = new System.Drawing.Size(72, 55);
+            this.BtnCliente.Size = new System.Drawing.Size(85, 87);
             this.BtnCliente.TabIndex = 0;
             this.BtnCliente.Text = "Cliente";
+            this.BtnCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BtnCliente.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(90, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(72, 55);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(168, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(72, 55);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(246, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(72, 55);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.BtnCliente.Click += new System.EventHandler(this.BtnCliente_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 86);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 121);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(938, 364);
+            this.pictureBox1.Size = new System.Drawing.Size(938, 329);
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
@@ -206,9 +224,9 @@
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(0, 86);
+            this.pictureBox2.Location = new System.Drawing.Point(0, 121);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(938, 364);
+            this.pictureBox2.Size = new System.Drawing.Size(938, 329);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
@@ -252,9 +270,8 @@
         private System.Windows.Forms.ToolStripMenuItem estadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem veículoToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button bntVeiculo;
         private System.Windows.Forms.Button BtnCliente;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;

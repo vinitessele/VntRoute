@@ -33,6 +33,30 @@ namespace VntRoute
             db.SaveChanges();
         }
 
+        public List<DtoCliente> getAllClientes()
+        {
+            Context db = new Context();
+            return db.cliente.ToList();
+        }
+
+        internal List<DtoMotorista> getAllMotorista()
+        {
+            Context db = new Context();
+            return db.motorista.ToList();
+        }
+
+        internal void setLancamento(DtoLancamento lanc)
+        {
+            Context db = new Context();
+                db.lancamento.Add(lanc);
+            db.SaveChanges();
+        }
+
+        internal void aterLancamento(DtoLancamento lanc)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<DtoDestino> getListaDestinos()
         {
             Context db = new Context();
@@ -72,7 +96,15 @@ namespace VntRoute
             db.SaveChanges();
         }
 
-        internal void setMotorista(DtoMotorista c)
+        public void DeleteLancamento(string id)
+        {
+            Context db = new Context();
+            DtoLancamento e = db.lancamento.FirstOrDefault(p => p.id == int.Parse(id));
+            db.lancamento.Remove(e);
+            db.SaveChanges();
+        }
+
+        public void setMotorista(DtoMotorista c)
         {
             Context db = new Context();
 

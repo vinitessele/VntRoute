@@ -67,5 +67,23 @@ namespace VntRoute
             FrmVeiculo fr = new FrmVeiculo();
             fr.Show();
         }
+
+        private void BtnCliente_Click(object sender, EventArgs e)
+        {
+            FrmCliente fr = new FrmCliente();
+            fr.Show();
+        }
+
+        private void bntVeiculo_Click(object sender, EventArgs e)
+        {
+            FrmVeiculo fr = new FrmVeiculo();
+            fr.Show();
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            FrmImport fr = new FrmImport();
+            fr.Show();
+        }
     }
 }

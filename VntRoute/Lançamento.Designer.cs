@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxValor = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxControle = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxMotorista = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxCliente = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -36,14 +44,6 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxData = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxMotorista = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxControle = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxValor = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comboBoxMotorista);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.comboBoxCliente);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.textBoxID);
             this.groupBox1.Controls.Add(this.btnExcluir);
@@ -70,6 +70,68 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lançamentos";
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(341, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 12);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Valor";
+            // 
+            // textBoxValor
+            // 
+            this.textBoxValor.Location = new System.Drawing.Point(340, 42);
+            this.textBoxValor.Name = "textBoxValor";
+            this.textBoxValor.Size = new System.Drawing.Size(144, 20);
+            this.textBoxValor.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(190, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 12);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "N° Controle";
+            // 
+            // textBoxControle
+            // 
+            this.textBoxControle.Location = new System.Drawing.Point(189, 42);
+            this.textBoxControle.Name = "textBoxControle";
+            this.textBoxControle.Size = new System.Drawing.Size(144, 20);
+            this.textBoxControle.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(19, 105);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 12);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Motoboy";
+            // 
+            // comboBoxMotorista
+            // 
+            this.comboBoxMotorista.FormattingEnabled = true;
+            this.comboBoxMotorista.Location = new System.Drawing.Point(22, 120);
+            this.comboBoxMotorista.Name = "comboBoxMotorista";
+            this.comboBoxMotorista.Size = new System.Drawing.Size(462, 21);
+            this.comboBoxMotorista.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(19, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 12);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Cliente";
+            // 
+            // comboBoxCliente
+            // 
+            this.comboBoxCliente.FormattingEnabled = true;
+            this.comboBoxCliente.Location = new System.Drawing.Point(22, 80);
+            this.comboBoxCliente.Name = "comboBoxCliente";
+            this.comboBoxCliente.Size = new System.Drawing.Size(462, 21);
+            this.comboBoxCliente.TabIndex = 4;
             // 
             // label7
             // 
@@ -99,6 +161,7 @@
             this.btnExcluir.TabIndex = 8;
             this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnCancelar
             // 
@@ -113,6 +176,7 @@
             this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -126,6 +190,7 @@
             this.btnSalvar.TabIndex = 6;
             this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // label1
             // 
@@ -142,68 +207,6 @@
             this.textBoxData.Size = new System.Drawing.Size(101, 20);
             this.textBoxData.TabIndex = 1;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(22, 80);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(462, 21);
-            this.comboBox1.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(19, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 12);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Cliente";
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(19, 105);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 12);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "Motoboy";
-            // 
-            // comboBoxMotorista
-            // 
-            this.comboBoxMotorista.FormattingEnabled = true;
-            this.comboBoxMotorista.Location = new System.Drawing.Point(22, 120);
-            this.comboBoxMotorista.Name = "comboBoxMotorista";
-            this.comboBoxMotorista.Size = new System.Drawing.Size(462, 21);
-            this.comboBoxMotorista.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(190, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 12);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "N° Controle";
-            // 
-            // textBoxControle
-            // 
-            this.textBoxControle.Location = new System.Drawing.Point(189, 42);
-            this.textBoxControle.Name = "textBoxControle";
-            this.textBoxControle.Size = new System.Drawing.Size(144, 20);
-            this.textBoxControle.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(341, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 12);
-            this.label5.TabIndex = 27;
-            this.label5.Text = "Valor";
-            // 
-            // textBoxValor
-            // 
-            this.textBoxValor.Location = new System.Drawing.Point(340, 42);
-            this.textBoxValor.Name = "textBoxValor";
-            this.textBoxValor.Size = new System.Drawing.Size(144, 20);
-            this.textBoxValor.TabIndex = 3;
-            // 
             // Lançamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,7 +215,8 @@
             this.ClientSize = new System.Drawing.Size(533, 236);
             this.Controls.Add(this.groupBox1);
             this.Name = "Lançamento";
-            this.Text = "Lançamento =";
+            this.Text = "Lançamento";
+            this.Load += new System.EventHandler(this.Lançamento_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -236,6 +240,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxMotorista;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxCliente;
     }
 }
