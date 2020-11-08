@@ -52,11 +52,15 @@
             this.textBoxEndereco = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxComissao = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.textBoxComissao);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label9);
@@ -115,7 +119,7 @@
             // 
             // textBoxRG
             // 
-            this.textBoxRG.Location = new System.Drawing.Point(416, 42);
+            this.textBoxRG.Location = new System.Drawing.Point(413, 42);
             this.textBoxRG.Name = "textBoxRG";
             this.textBoxRG.Size = new System.Drawing.Size(114, 20);
             this.textBoxRG.TabIndex = 4;
@@ -238,7 +242,7 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(157, 129);
+            this.textBoxEmail.Location = new System.Drawing.Point(155, 129);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(271, 20);
             this.textBoxEmail.TabIndex = 8;
@@ -290,6 +294,22 @@
             this.textBoxNome.Size = new System.Drawing.Size(211, 20);
             this.textBoxNome.TabIndex = 2;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(529, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(63, 13);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "% Comissão";
+            // 
+            // textBoxComissao
+            // 
+            this.textBoxComissao.Location = new System.Drawing.Point(529, 42);
+            this.textBoxComissao.Name = "textBoxComissao";
+            this.textBoxComissao.Size = new System.Drawing.Size(114, 20);
+            this.textBoxComissao.TabIndex = 30;
+            // 
             // FrmMotorista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -332,5 +352,7 @@
         private System.Windows.Forms.TextBox textBoxNome;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxComissao;
     }
 }

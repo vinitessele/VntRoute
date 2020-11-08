@@ -21,5 +21,6 @@ namespace VntRoute
         public DbSet<DtoCidade> cidade { get; set; }
         public DbSet<DtoEstado> estado { get; set; }
         public DbSet<DtoVeiculo> veiculo { get; set; }
+        public DbSet<DtoLancamento> lancamento { get; set; }
     }
 }

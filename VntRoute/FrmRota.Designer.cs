@@ -35,6 +35,7 @@
             this.Btn_selecionarMapa = new System.Windows.Forms.Button();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,6 +92,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.Btn_selecionarMapa);
             this.groupBox1.Controls.Add(this.btnSelecionar);
             this.groupBox1.Controls.Add(this.checkedListBox1);
@@ -107,7 +109,7 @@
             this.Btn_selecionarMapa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Btn_selecionarMapa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_selecionarMapa.ForeColor = System.Drawing.Color.Transparent;
-            this.Btn_selecionarMapa.Location = new System.Drawing.Point(430, 19);
+            this.Btn_selecionarMapa.Location = new System.Drawing.Point(430, 79);
             this.Btn_selecionarMapa.Name = "Btn_selecionarMapa";
             this.Btn_selecionarMapa.Size = new System.Drawing.Size(113, 44);
             this.Btn_selecionarMapa.TabIndex = 2;
@@ -121,7 +123,7 @@
             this.btnSelecionar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSelecionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelecionar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSelecionar.Location = new System.Drawing.Point(430, 75);
+            this.btnSelecionar.Location = new System.Drawing.Point(430, 129);
             this.btnSelecionar.Name = "btnSelecionar";
             this.btnSelecionar.Size = new System.Drawing.Size(113, 44);
             this.btnSelecionar.TabIndex = 1;
@@ -136,6 +138,17 @@
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(418, 154);
             this.checkedListBox1.TabIndex = 0;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(430, 19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(92, 17);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "Marcar Todos";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // FrmRota
             // 
@@ -153,6 +166,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmRota_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -165,5 +179,6 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button btnSelecionar;
         private System.Windows.Forms.Button Btn_selecionarMapa;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

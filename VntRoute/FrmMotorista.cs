@@ -37,6 +37,8 @@ namespace VntRoute
                 c.id_cidade = Convert.ToInt16(comboBox1.SelectedValue);
                 c.observacoes = textBoxObservacao.Text;
                 c.complemento = textBoxComplemento.Text;
+                if (textBoxComissao.Text != string.Empty)
+                    c.comissao = float.Parse(textBoxComissao.Text);
 
                 if (textBoxID.Text == string.Empty)
                     set.setMotorista(c);
@@ -45,7 +47,7 @@ namespace VntRoute
                     c.id = int.Parse(textBoxID.Text);
                     set.AlteraMotorista(c);
                 }
-
+                MessageBox.Show("Registro salvo com sucesso");
             }
             catch (Exception ex)
             {

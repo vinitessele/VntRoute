@@ -18,5 +18,7 @@ namespace VntRoute
         public string endereco { get; set; }
         public string transportadora { get; set; }
         public string bairro { get; set; }
+        public double distancia { get; set; }
+        public string duracao { get; set; }
     }
 }

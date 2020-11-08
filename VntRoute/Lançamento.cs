@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VntRoute
 {
-    public partial class Lançamento : Form
+    public partial class frmLancamento : Form
     {
-        public Lançamento()
+        public frmLancamento()
         {
             InitializeComponent();
         }
@@ -27,26 +27,31 @@ namespace VntRoute
                 lanc.dt_record = DateTime.Now;
                 lanc.id_cliente = Convert.ToInt16(comboBoxCliente.SelectedValue);
                 lanc.id_motorista = Convert.ToInt16(comboBoxMotorista.SelectedValue);
-                lanc.valor = float.Parse(textBoxValor.Text);
-                lanc.nr_controle = int.Parse(textBoxControle.Text);
+                if (textBoxValor.Text != string.Empty)
+                    lanc.valor = float.Parse(textBoxValor.Text);
+                if (textBoxControle.Text != string.Empty)
+                    lanc.nr_controle = int.Parse(textBoxControle.Text);
 
                 if (textBoxID.Text != string.Empty)
                 {
                     lanc.id = int.Parse(textBoxID.Text);
-                    set.aterLancamento(lanc);
+                    set.alterLancamento(lanc);
                 }
                 else
                 {
                     set.setLancamento(lanc);
                 }
+                MessageBox.Show("Registro salvo com sucesso");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                throw ex;
             }
         }
 
         private void Lançamento_Load(object sender, EventArgs e)
         {
+            textBoxData.Text = DateTime.Now.ToShortDateString();
             model get = new model();
             List<DtoCliente> ListClientes = get.getAllClientes();
             comboBoxCliente.DataSource = null;

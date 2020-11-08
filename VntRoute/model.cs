@@ -39,20 +39,20 @@ namespace VntRoute
             return db.cliente.ToList();
         }
 
-        internal List<DtoMotorista> getAllMotorista()
+        public List<DtoMotorista> getAllMotorista()
         {
             Context db = new Context();
             return db.motorista.ToList();
         }
 
-        internal void setLancamento(DtoLancamento lanc)
+        public void setLancamento(DtoLancamento lanc)
         {
             Context db = new Context();
-                db.lancamento.Add(lanc);
+            db.lancamento.Add(lanc);
             db.SaveChanges();
         }
 
-        internal void aterLancamento(DtoLancamento lanc)
+        public void alterLancamento(DtoLancamento lanc)
         {
             throw new NotImplementedException();
         }
@@ -126,6 +126,7 @@ namespace VntRoute
             c.id_cidade = m.id_cidade;
             c.observacoes = m.observacoes;
             c.complemento = m.complemento;
+            c.comissao = m.comissao;
             db.SaveChanges();
         }
 
@@ -147,15 +148,15 @@ namespace VntRoute
             Context db = new Context();
 
             var q = (from c in db.cidade
-                    join e in db.estado
-                    on c.id_estado equals e.id into estado
-                    from e in estado.DefaultIfEmpty()
-                    select new DtoCidadeMap()
-                    {
-                        id = c.id,
-                        nome = c.nome+"/"+e.uf,
-                        id_estado = c.id_estado
-                    }).OrderBy(p => p.nome);
+                     join e in db.estado
+                     on c.id_estado equals e.id into estado
+                     from e in estado.DefaultIfEmpty()
+                     select new DtoCidadeMap()
+                     {
+                         id = c.id,
+                         nome = c.nome + "/" + e.uf,
+                         id_estado = c.id_estado
+                     }).OrderBy(p => p.nome);
 
             return q.ToList();
         }
@@ -273,23 +274,18 @@ namespace VntRoute
             db.SaveChanges();
         }
 
-        public List<DtoDestino> getRotaCoordenadas(List<DtoBairro> listBairro)
-        {
-            List<DtoDestino> lista = getListaDestinos(listBairro);
 
-            return lista;
-        }
-
-        private List<DtoDestino> getListaDestinos(List<DtoBairro> listBairro)
+        public List<DtoDestino> getListaDestinosBairro(List<DtoBairro> listBairro)
         {
             Context db = new Context();
             List<DtoDestino> listdestinos = new List<DtoDestino>();
             foreach (var l in listBairro)
             {
                 List<DtoDestino> listdestino = new List<DtoDestino>();
-                listdestino = db.destino.Where(p => p.status == "I" && p.bairro == l.bairro).OrderBy(p => p.bairro).OrderBy(p => p.latitude).OrderBy(p => p.longitude).ToList();
+                listdestino = db.destino.Where(p => p.status == "I" && p.bairro == l.bairro).OrderBy(p=>p.distancia).ToList();
                 listdestinos.AddRange(listdestino);
             }
+            listdestinos= listdestinos.OrderBy(p => p.distancia).ToList();
             return listdestinos;
         }
 
@@ -423,11 +419,22 @@ namespace VntRoute
 
         public DtoLatLong GetLatLongGoogle(string text)
         {
-            var requestUri = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?address=" + text + "&key=AIzaSyAwjnJzF57fQddVy_dL8yTC01Zw7ufVuY8", Uri.EscapeDataString(text));
-
-            WebRequest request = WebRequest.Create(requestUri);
-
-            using (WebResponse response = (HttpWebResponse)request.GetResponse())
+            Context db = new Context();
+            string origin = string.Empty;
+            try
+            {
+                origin = db.empresa.SingleOrDefault().endereco;
+            }
+            catch (Exception)
+            {
+                 origin = "Rua Carlos DallAgnolo 121,Toledo, PR";
+            }
+            string requestUriCordenadas = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?address=" + text + "&key=AIzaSyAwjnJzF57fQddVy_dL8yTC01Zw7ufVuY8", Uri.EscapeDataString(text));
+            string requestUriDistancia = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + origin + "&destinations=" + text + "&key=AIzaSyCNiXQqjhm3GQ83i2FmXXo835XUOfylz6c";
+            string duration;
+            string distance;
+            WebRequest requestCordenadas = WebRequest.Create(requestUriCordenadas);
+            using (WebResponse response = (HttpWebResponse)requestCordenadas.GetResponse())
             {
                 using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
                 {
@@ -435,9 +442,23 @@ namespace VntRoute
                     dsResult.ReadXml(reader);
                     string lati = dsResult.Tables["location"].Rows[0]["lat"].ToString();
                     string longi = dsResult.Tables["location"].Rows[0]["lng"].ToString();
+
+                    WebRequest requestDistancia = WebRequest.Create(requestUriDistancia);
+                    using (WebResponse responseDistancia = (HttpWebResponse)requestDistancia.GetResponse())
+                    {
+                        using (StreamReader readerDistancia = new StreamReader(responseDistancia.GetResponseStream(), Encoding.UTF8))
+                        {
+                            DataSet dsResultDistancia = new DataSet();
+                            dsResultDistancia.ReadXml(readerDistancia);
+                            duration = dsResultDistancia.Tables["duration"].Rows[0]["text"].ToString() + " - " + dsResultDistancia.Tables["distance"].Rows[0]["text"].ToString(); ;
+                            distance = dsResultDistancia.Tables["distance"].Rows[0]["value"].ToString();
+                        }
+                    }
                     DtoLatLong i = new DtoLatLong();
                     i.latitude = lati;
                     i.longitude = longi;
+                    i.distancia = distance;
+                    i.duracao = duration;
                     return i;
                 }
             }

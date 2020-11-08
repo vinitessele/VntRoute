@@ -76,7 +76,7 @@ namespace VntRoute
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
         }
 
@@ -140,7 +140,7 @@ namespace VntRoute
                 this.openFileDialog1.InitialDirectory = @"c:\temp";
                 DialogResult dr = this.openFileDialog1.ShowDialog();
                 labelEndereco.Text = openFileDialog1.FileName;
-
+                progressBar1.Visible = true;
                 if (dr == DialogResult.OK)
                 {
                     using (PdfReader reader = new PdfReader(openFileDialog1.FileName))
@@ -177,7 +177,7 @@ namespace VntRoute
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             FrmDestino frD = new FrmDestino(listBoxDestinos.Text);
-            frD.Show();
+            frD.ShowDialog();
         }
 
         private void listBoxDestinos_DoubleClick(object sender, EventArgs e)
@@ -198,7 +198,7 @@ namespace VntRoute
         private void btnRota_Click(object sender, EventArgs e)
         {
             FrmRota fr = new FrmRota();
-            fr.Show();
+            fr.ShowDialog();
         }
 
         #region transportadoras
@@ -207,8 +207,11 @@ namespace VntRoute
         {
             try
             {
+                progressBar1.Maximum = theLines.Count();
+                progressBar1.Minimum = 0;
                 for (int i = 0; i < theLines.Count(); i++)
                 {
+                    progressBar1.Value = i;
                     if (i >= 19)
                     {
                         DtoDestino destino = new DtoDestino();
@@ -326,10 +329,12 @@ namespace VntRoute
 
                             try
                             {
-                                model getlatlng = new model();
-                                DtoLatLong latlong = getlatlng.GetLatLongGoogle(destino.endereco);
+                                model m = new model();
+                                DtoLatLong latlong = m.GetLatLongGoogle(destino.endereco);
                                 destino.latitude = Convert.ToDouble(latlong.latitude, CultureInfo.InvariantCulture);
                                 destino.longitude = Convert.ToDouble(latlong.longitude, CultureInfo.InvariantCulture);
+                                destino.distancia = Convert.ToDouble(latlong.distancia, CultureInfo.InvariantCulture);
+                                destino.duracao = latlong.duracao;
                             }
                             catch (Exception)
                             {
@@ -342,9 +347,10 @@ namespace VntRoute
 
                         }
                         i++;
-
                     }
                 }
+                CarregarDestinos();
+                progressBar1.Visible = false;
             }
             catch (Exception ex)
             { }
@@ -354,10 +360,13 @@ namespace VntRoute
         {
             try
             {
+                progressBar1.Maximum = theLines.Count();
+                progressBar1.Minimum = 0;
                 int linha = 0;
                 foreach (var l in theLines)
                 {
                     linha++;
+                    progressBar1.Value = linha;
                     if (linha >= 15 && linha < 48)
                     {
                         string theLine = l.ToLower();
@@ -398,8 +407,10 @@ namespace VntRoute
                                     DtoLatLong latlong = getlatlng.GetLatLongGoogle(destino.endereco);
                                     destino.latitude = Convert.ToDouble(latlong.latitude, CultureInfo.InvariantCulture);
                                     destino.longitude = Convert.ToDouble(latlong.longitude, CultureInfo.InvariantCulture);
+                                    destino.distancia = Convert.ToDouble(latlong.distancia, CultureInfo.InvariantCulture);
+                                    destino.duracao = latlong.duracao;
                                 }
-                                catch (Exception)
+                                catch (Exception ex)
                                 {
                                     destino.status = "E";
                                 }
@@ -444,6 +455,8 @@ namespace VntRoute
                                     DtoLatLong latlong = getlatlng.GetLatLongGoogle(destino.endereco);
                                     destino.latitude = Convert.ToDouble(latlong.latitude, CultureInfo.InvariantCulture);
                                     destino.longitude = Convert.ToDouble(latlong.longitude, CultureInfo.InvariantCulture);
+                                    destino.distancia = Convert.ToDouble(latlong.distancia, CultureInfo.InvariantCulture);
+                                    destino.duracao = latlong.duracao;
                                 }
                                 catch (Exception)
                                 {
@@ -455,9 +468,10 @@ namespace VntRoute
                         destino.status = "I";
                         model post = new model();
                         post.set(destino);
-
                     }
                 }
+                CarregarDestinos();
+                progressBar1.Visible = false;
 
             }
             catch (Exception ex)
@@ -470,8 +484,12 @@ namespace VntRoute
         {
             try
             {
+                progressBar1.Maximum = theLines.Count();
+                progressBar1.Minimum = 0;
+
                 for (int i = 0; i < theLines.Count(); i++)
                 {
+                    progressBar1.Value = i;
                     if (theLines[i].Contains("Nome") && theLines[i].Contains("Cep"))
                     {
                         DtoDestino destino = new DtoDestino();
@@ -493,12 +511,15 @@ namespace VntRoute
                             destino.bairro = bairro;
                             destino.endereco = theLines[i + 1].Substring(posicao + 1).Replace('/', ',') + "," + bairro + ",Toledo, PR";
 
-                            model getlatlng = new model();
-                            DtoLatLong latlong = getlatlng.GetLatLongGoogle(destino.endereco);
+                            model m = new model();
+                            DtoLatLong latlong = m.GetLatLongGoogle(destino.endereco);
+                            
                             try
                             {
                                 destino.latitude = double.Parse(latlong.latitude, CultureInfo.InvariantCulture);
                                 destino.longitude = double.Parse(latlong.longitude, CultureInfo.InvariantCulture);
+                                destino.distancia = Convert.ToDouble(latlong.distancia, CultureInfo.InvariantCulture);
+                                destino.duracao = latlong.duracao;
                             }
                             catch (Exception)
                             {
@@ -510,6 +531,8 @@ namespace VntRoute
                         }
                     }
                 }
+                CarregarDestinos();
+                progressBar1.Visible = false;
             }
             catch (Exception ex)
             {

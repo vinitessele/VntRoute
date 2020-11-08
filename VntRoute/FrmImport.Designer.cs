@@ -43,6 +43,7 @@
             this.btnListaEnderecos = new System.Windows.Forms.Button();
             this.listBoxDestinos = new System.Windows.Forms.ListBox();
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +98,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(900, 27);
+            this.comboBox1.Location = new System.Drawing.Point(900, 12);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(331, 21);
             this.comboBox1.TabIndex = 6;
@@ -230,19 +231,29 @@
             this.gMapControl1.TabIndex = 11;
             this.gMapControl1.Zoom = 0D;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(12, 12);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(876, 23);
+            this.progressBar1.Step = 1;
+            this.progressBar1.TabIndex = 13;
+            this.progressBar1.Visible = false;
+            // 
             // FrmImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1243, 707);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.gMapControl1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmImport";
-            this.Text = "Import";
+            this.Text = "Importar registros";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.groupBox1.ResumeLayout(false);
@@ -268,6 +279,7 @@
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnRota;
         private GMap.NET.WindowsForms.GMapControl gMapControl1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

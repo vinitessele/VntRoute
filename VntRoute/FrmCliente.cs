@@ -53,7 +53,7 @@ namespace VntRoute
                     c.id = int.Parse(textBoxID.Text);
                     set.AlteraCliente(c);
                 }
-
+                MessageBox.Show("Registro salvo com sucesso");
             }
             catch (Exception ex)
             {

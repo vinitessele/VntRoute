@@ -33,11 +33,12 @@ namespace VntRoute
                     d.id = int.Parse(textBoxID.Text);
                     set.AlteraCidade(d);
                 }
+                MessageBox.Show("Registro salvo com sucesso");
                 this.Close();
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

@@ -18,5 +18,6 @@ namespace VntRoute
         public string numeroregistro { get; set; }
         public string complemento { get; set; }
         public string observacoes { get; set; }
+        public double? comissao { get; set; }        
     }
 }

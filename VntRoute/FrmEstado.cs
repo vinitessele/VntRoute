@@ -35,6 +35,7 @@ namespace VntRoute
                     set.setEstado(d);
                 else
                     set.AlteraEstado(d);
+                MessageBox.Show("Registro salvo com sucesso");
                 this.Close();
             }
             catch (Exception ex)

@@ -23,67 +23,79 @@ namespace VntRoute
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCliente fr = new FrmCliente();
-            fr.Show();
+            fr.ShowDialog();
         }
 
         private void parametrosToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             FrmEmpresa fr = new FrmEmpresa();
-            fr.Show();
+            fr.ShowDialog();
         }
 
         private void destinosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmDestino frD = new FrmDestino();
-            frD.Show();
+            frD.ShowDialog();
         }
 
         private void importarArquivoDeRotasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmImport fr = new FrmImport();
-            fr.Show();
+            fr.ShowDialog();
         }
 
         private void motoristasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmMotorista fr = new FrmMotorista();
-            fr.Show();
+            fr.ShowDialog();
         }
 
         private void cidadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCidade fr = new FrmCidade();
-            fr.Show();
+            fr.ShowDialog();
         }
 
         private void estadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmEstado fr = new FrmEstado();
-            fr.Show();
+            fr.ShowDialog();
         }
 
         private void veículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmVeiculo fr = new FrmVeiculo();
-            fr.Show();
+            fr.ShowDialog();
         }
 
         private void BtnCliente_Click(object sender, EventArgs e)
         {
             FrmCliente fr = new FrmCliente();
-            fr.Show();
+            fr.ShowDialog();
         }
 
         private void bntVeiculo_Click(object sender, EventArgs e)
         {
             FrmVeiculo fr = new FrmVeiculo();
-            fr.Show();
+            fr.ShowDialog();
         }
 
         private void btnImport_Click(object sender, EventArgs e)
         {
             FrmImport fr = new FrmImport();
-            fr.Show();
+            fr.ShowDialog();
+        }
+
+        private void lançamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLancamento fr = new frmLancamento();
+            fr.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmLancamento fr = new frmLancamento();
+            fr.ShowDialog();
         }
     }
 }

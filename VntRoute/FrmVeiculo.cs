@@ -28,8 +28,9 @@ namespace VntRoute
                     v.id = int.Parse(textBoxID.Text);
                     set.AlteraVeiculo(v);
                 }
+                MessageBox.Show("Registro salvo com sucesso");
             }
-            catch (Exception ex) {
+            catch (Exception) {
             }
         }
 

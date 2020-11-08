@@ -160,7 +160,7 @@ namespace VntRoute
             }
             //RotaCoordenadas(listBairros);
             model get = new model();
-            List<DtoDestino> listRota = get.getRotaCoordenadas(listBairros);
+            List<DtoDestino> listRota = get.getListaDestinosBairro(listBairros);
 
             foreach (DtoDestino l in listRota)
             {
@@ -177,7 +177,7 @@ namespace VntRoute
                 listBoxDestinos.Items.Clear();
 
                 model get = new model();
-                List<DtoDestino> listRota = get.getRotaCoordenadas(listBairros);
+                List<DtoDestino> listRota = get.getListaDestinosBairro(listBairros);
                 for (int i = 0; i < listRota.Count - 1; i++)
                 {
                     double start_latitude = Convert.ToDouble(listRota[i].latitude, CultureInfo.InvariantCulture);
@@ -201,6 +201,20 @@ namespace VntRoute
                     this.listBoxDestinos.Items.Add(listRota[i].id.ToString() + " - Inicio - " + listRota[i].endereco);
                     this.listBoxDestinos.Items.Add(listRota[i].id.ToString() + " - Fim - " + listRota[i + 1].endereco);
                 }
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            var isChecked = ((CheckBox)sender).Checked;
+            if (isChecked)
+                checkBox1.Text = "Desmarcar Todos";
+            else
+                checkBox1.Text = "Marcar Todos";
+
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                checkedListBox1.SetItemChecked(i, isChecked);
             }
         }
     }
