@@ -12,6 +12,7 @@ using GMap.NET.MapProviders;
 using GMap.NET;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace VntRoute
 {
@@ -50,7 +51,7 @@ namespace VntRoute
             foreach (var l in lista)
             {
                 AddMarkerMap(l.latitude, l.longitude, l.documento + "\n" + l.nome + "\n" + l.endereco);
-                    this.listBoxDestinos.Items.Add(l.id + "-" + l.documento + "-" + l.nome + "-" + l.bairro);
+                this.listBoxDestinos.Items.Add(l.id + "-" + l.documento + "-" + l.nome + "-" + l.bairro);
             }
         }
 
@@ -143,37 +144,53 @@ namespace VntRoute
                 progressBar1.Visible = true;
                 if (dr == DialogResult.OK)
                 {
-                    using (PdfReader reader = new PdfReader(openFileDialog1.FileName))
+                    string filePath = this.openFileDialog1.FileName;
+                    string extensao = System.IO.Path.GetExtension(filePath);
+                    if (extensao == ".pdf")
                     {
-                        for (int i = 1; i <= reader.NumberOfPages; i++)
+                        using (PdfReader reader = new PdfReader(openFileDialog1.FileName))
                         {
-                            ITextExtractionStrategy Strategy = new LocationTextExtractionStrategy();
-                            string thePage = string.Empty;
-                            thePage = PdfTextExtractor.GetTextFromPage(reader, i, Strategy);
-
-                            thePage = Encoding.UTF8.GetString(ASCIIEncoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(thePage)));
-
-                            string[] theLines = thePage.Split('\n');
-
-                            if (theLines[0].Contains("JADLOG"))
+                            for (int i = 1; i <= reader.NumberOfPages; i++)
                             {
-                                Jadlog(theLines);
+                                ITextExtractionStrategy Strategy = new LocationTextExtractionStrategy();
+                                string thePage = string.Empty;
+                                thePage = PdfTextExtractor.GetTextFromPage(reader, i, Strategy);
+
+                                thePage = Encoding.UTF8.GetString(ASCIIEncoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(thePage)));
+
+                                string[] theLines = thePage.Split('\n');
+
+                                if (theLines[0].Contains("JADLOG") || theLines[0].Contains("Lista de entrega"))
+                                {
+                                    Jadlog(theLines);
+                                }
+                                if (theLines[0].Contains("CAF Consolidada"))
+                                {
+                                    TotalExpress(theLines);
+                                }
+                                if (theLines[1].Contains("DIALOGO"))
+                                {
+                                    DIALOGO(theLines);
+                                }
                             }
-                            if (theLines[0].Contains("CAF Consolidada"))
-                            {
-                                TotalExpress(theLines);
-                            }
-                            if (theLines[1].Contains("DIALOGO"))
-                            {
-                                DIALOGO(theLines);
-                            }
+                        }
+                    }
+                    else
+                    {
+                        var fileStream = this.openFileDialog1.OpenFile();
+
+                        using (StreamReader reader = new StreamReader(fileStream))
+                        {
+                            string fileContent = reader.ReadToEnd();
+                            string[] theLines = fileContent.Split('\n');
+
+                            ArquivoTXT(theLines);
                         }
                     }
                 }
             }
             catch (Exception ex) { }
         }
-
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             FrmDestino frD = new FrmDestino(listBoxDestinos.Text);
@@ -202,7 +219,51 @@ namespace VntRoute
         }
 
         #region transportadoras
+        public void ArquivoTXT(string[] theLines)
+        {
+            progressBar1.Maximum = theLines.Count();
+            progressBar1.Minimum = 0;
+            for (int i = 0; i < theLines.Count(); i++)
+            {
+                progressBar1.Value = i;
+                DtoDestino destino = new DtoDestino();
+                destino.transportadora = theLines[0];
+                if (theLines[i].Contains("NF:"))
+                {
+                    destino.documento = theLines[i].Substring(3);
+                    destino.nome = theLines[i + 1];
+                    model get = new model();
+                    Boolean existeDocumento = get.getDestinoDocumento(destino.documento, destino.transportadora);
+                    if (!existeDocumento)
+                    {
+                        int posicao = theLines[i + 2].IndexOf("-");
+                        string bairro = theLines[i + 2].Substring(posicao + 2);
+                        int posicaofinal = bairro.IndexOf("-");
+                        destino.bairro = bairro.Substring(0, 7);
+                        destino.endereco = theLines[i + 2].Replace('-', ',');
 
+                        model m = new model();
+                        DtoLatLong latlong = m.GetLatLongGoogle(destino.endereco);
+
+                        try
+                        {
+                            destino.latitude = double.Parse(latlong.latitude, CultureInfo.InvariantCulture);
+                            destino.longitude = double.Parse(latlong.longitude, CultureInfo.InvariantCulture);
+                            destino.distancia = Convert.ToDouble(latlong.distancia, CultureInfo.InvariantCulture);
+                            destino.duracao = latlong.duracao;
+                        }
+                        catch (Exception)
+                        {
+                            destino.status = "E";
+                        }
+                        destino.status = "I";
+                        model post = new model();
+                        post.set(destino);
+                    }
+                }
+
+            }
+        }
         private void DIALOGO(string[] theLines)
         {
             try
@@ -513,7 +574,7 @@ namespace VntRoute
 
                             model m = new model();
                             DtoLatLong latlong = m.GetLatLongGoogle(destino.endereco);
-                            
+
                             try
                             {
                                 destino.latitude = double.Parse(latlong.latitude, CultureInfo.InvariantCulture);
