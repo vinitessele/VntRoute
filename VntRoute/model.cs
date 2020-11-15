@@ -137,7 +137,7 @@ namespace VntRoute
             foreach (var l in listBairro)
             {
                 List<DtoDestino> listdestino = new List<DtoDestino>();
-                listdestino = db.destino.Where(p => p.status == "I" && p.bairro == l.bairro).OrderBy(p => p.endereco).Take(25).ToList();
+                listdestino = db.destino.Where(p => p.status == "I" && p.bairro == l.bairro).OrderBy(p => p.distancia).OrderBy(p => p.latitude).OrderBy(p => p.longitude).Take(25).ToList();
                 listdestinos.AddRange(listdestino);
             }
             return listdestinos;
@@ -274,7 +274,6 @@ namespace VntRoute
             db.SaveChanges();
         }
 
-
         public List<DtoDestino> getListaDestinosBairro(List<DtoBairro> listBairro)
         {
             Context db = new Context();
@@ -285,7 +284,7 @@ namespace VntRoute
                 listdestino = db.destino.Where(p => p.status == "I" && p.bairro == l.bairro).OrderBy(p=>p.distancia).ToList();
                 listdestinos.AddRange(listdestino);
             }
-            listdestinos= listdestinos.OrderBy(p => p.distancia).ToList();
+            listdestinos= listdestinos.OrderBy(p => p.distancia).OrderBy(p => p.latitude).OrderBy(p => p.longitude).ToList();
             return listdestinos;
         }
 
@@ -311,6 +310,7 @@ namespace VntRoute
         {
             Context db = new Context();
             var query = from p in db.destino
+                        where p.status == "I"
                         group p by p.bairro into g
                         select new DtoBairro()
                         {

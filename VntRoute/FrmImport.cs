@@ -369,6 +369,12 @@ namespace VntRoute
                           if (theLines[i + 1].Contains("VILA OPERARIA"))
                             destino.bairro = "VILA OPERARIA";
                         else
+                          if (theLines[i + 1].Contains("JARDIM GISELA"))
+                            destino.bairro = "JARDIM GISELA";
+                        else
+                          if (theLines[i + 1].Contains("VILA NOVA"))
+                            destino.bairro = "VILA NOVA";
+                        else
                             destino.bairro = "Não encontrado";
 
                         model get = new model();
@@ -440,7 +446,10 @@ namespace VntRoute
                             destino.documento = theLine.Substring(20, 9);
                             destino.nome = theLine.Substring(35);
                             int posicao = theLine.IndexOf("/") + 2;
-                            destino.bairro = theLine.Substring(posicao);
+                            if (theLine.Substring(posicao).Length > 30)
+                                destino.bairro = theLine.Substring(posicao, 30).ToUpper();
+                            else
+                                destino.bairro = theLine.Substring(posicao).ToUpper();
 
                             model get = new model();
                             Boolean existeDocumento = get.getDestinoDocumento(destino.documento, destino.transportadora);
@@ -537,7 +546,7 @@ namespace VntRoute
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex; ;
             }
         }
 

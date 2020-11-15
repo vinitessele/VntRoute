@@ -71,9 +71,10 @@ namespace VntRoute
             comboBox1.DataSource = ListCidades;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void btnImprimir_Click(object sender, EventArgs e)
         {
-
+            Relatorio.FrmRelCliente fr = new Relatorio.FrmRelCliente();
+            fr.Show();
         }
     }
 }

@@ -97,5 +97,11 @@ namespace VntRoute
             frmLancamento fr = new frmLancamento();
             fr.ShowDialog();
         }
+
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Relatorio.FrmRelCliente fr = new Relatorio.FrmRelCliente();
+            fr.Show();
+        }
     }
 }

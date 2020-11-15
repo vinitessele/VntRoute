@@ -2,6 +2,7 @@
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -129,7 +130,16 @@ namespace VntRoute
             model model = new model();
             int idRota = model.getIdRota();
             idRota++;
-            List<DtoDestino> lista = model.getListaDestinos();
+            List<DtoBairro> listBairros = new List<DtoBairro>();
+            foreach (string l in checkedListBox1.CheckedItems)
+            {
+                DtoBairro b = new DtoBairro();
+                b.bairro = l;
+                listBairros.Add(b);
+            }
+            //RotaCoordenadas(listBairros);
+            model get = new model();
+            List<DtoDestino> lista = get.getListaDestinosBairro(listBairros);
             foreach (var l in lista)
             {
                 model.addRota(l.id, idRota, "F");
@@ -169,6 +179,8 @@ namespace VntRoute
                 this.listBoxDestinos.Items.Add(l.id.ToString() + " - Entrega - " + texto);
                 AddMarkerMap(l.latitude, l.longitude, texto);
             }
+            Relatorio.FrmListaDestinos frm = new Relatorio.FrmListaDestinos(listRota);
+            frm.ShowDialog();
         }
 
         private void RotaCoordenadas(List<DtoBairro> listBairros)
