@@ -37,7 +37,7 @@
             this.Btn_selecionarMapa = new System.Windows.Forms.Button();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,6 +142,7 @@
             this.btnSelecionar.TabIndex = 1;
             this.btnSelecionar.Text = "Traçar Rota Google";
             this.btnSelecionar.UseVisualStyleBackColor = false;
+            this.btnSelecionar.Visible = false;
             this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
             // 
             // checkedListBox1
@@ -152,19 +153,20 @@
             this.checkedListBox1.Size = new System.Drawing.Size(418, 154);
             this.checkedListBox1.TabIndex = 0;
             // 
-            // button1
+            // btnImprimir
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(12, 630);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(549, 43);
-            this.button1.TabIndex = 17;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnImprimir.BackColor = System.Drawing.Color.White;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.Black;
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.Location = new System.Drawing.Point(12, 630);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(549, 43);
+            this.btnImprimir.TabIndex = 17;
+            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Visible = false;
             // 
             // FrmRota
             // 
@@ -172,12 +174,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1293, 729);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.gMapControl1);
             this.Controls.Add(this.listBoxDestinos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRota";
             this.Text = "Rota";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -197,6 +200,6 @@
         private System.Windows.Forms.Button btnSelecionar;
         private System.Windows.Forms.Button Btn_selecionarMapa;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }
