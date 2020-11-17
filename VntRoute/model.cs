@@ -468,7 +468,7 @@ namespace VntRoute
         public List<DtoDestino> getListDestino()
         {
             Context db = new Context();
-            return db.destino.Where(p => p.id_rota == 0).ToList();
+            return db.destino.Where(p => p.id_rota == 0).OrderBy(p=>p.latitude).OrderBy(p => p.distancia).ToList();
         }
 
         public DtoLatLong getLatLngEndereco(string text)
@@ -597,6 +597,8 @@ namespace VntRoute
             des.latitude = d.latitude;
             des.longitude = d.longitude;
             des.bairro = d.bairro;
+            des.duracao = d.duracao;
+            des.distancia = d.distancia;
             des.transportadora = d.transportadora;
             db.SaveChanges();
         }
@@ -610,7 +612,10 @@ namespace VntRoute
             des.endereco = d.endereco;
             des.latitude = d.latitude;
             des.longitude = d.longitude;
+            des.distancia = d.distancia;
+            des.duracao = d.duracao;
             des.bairro = d.bairro;
+            des.status = d.status;
             des.transportadora = d.transportadora;
             db.destino.Add(des);
             db.SaveChanges();

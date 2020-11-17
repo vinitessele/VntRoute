@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -36,6 +35,8 @@ namespace VntRoute
             {
                 textBoxLatitude.Text = latlong.latitude;
                 textBoxLongitude.Text = latlong.longitude;
+                textBoxDistancia.Text = latlong.distancia;
+                textBoxDuracao.Text = latlong.duracao;
             }
             catch (Exception)
             {
@@ -56,18 +57,37 @@ namespace VntRoute
                 d.longitude = Convert.ToDouble(textBoxLongitude.Text, CultureInfo.InvariantCulture);
                 d.transportadora = textBoxTransportadora.Text;
                 d.bairro = textBoxBairro.Text;
+                d.duracao = textBoxDuracao.Text;
+                d.distancia = Convert.ToDouble(textBoxDistancia.Text, CultureInfo.InvariantCulture);
                 d.status = "I";
+
                 if (textBoxID.Text == "")
                     set.setDestino(d);
                 else
                     set.AlteraDestino(d);
                 MessageBox.Show("Registro salvo com sucesso");
-                this.Close();
+
+                CarregaDestinos();
+                limpaCampos();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        private void limpaCampos()
+        {
+            textBoxID.Text = string.Empty;
+            textBoxNome.Text = string.Empty;
+            textBoxDocumento.Text = string.Empty;
+            textBoxEndereco.Text = string.Empty;
+            textBoxLatitude.Text = string.Empty;
+            textBoxLongitude.Text = string.Empty;
+            textBoxTransportadora.Text = string.Empty;
+            textBoxBairro.Text = string.Empty;
+            textBoxDistancia.Text = string.Empty;
+            textBoxDuracao.Text = string.Empty;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -90,6 +110,11 @@ namespace VntRoute
         }
 
         private void FrmDestino_Load(object sender, EventArgs e)
+        {
+            CarregaDestinos();
+        }
+
+        private void CarregaDestinos()
         {
             model get = new model();
             List<DtoDestino> d = get.getListDestino();

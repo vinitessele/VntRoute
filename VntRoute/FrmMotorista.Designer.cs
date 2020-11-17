@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMotorista));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxComissao = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -52,8 +55,6 @@
             this.textBoxEndereco = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBoxComissao = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +90,23 @@
             this.groupBox1.Size = new System.Drawing.Size(776, 412);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cadastro Empresa";
+            this.groupBox1.Text = "Cadastro Motoristas";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(529, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(63, 13);
+            this.label11.TabIndex = 31;
+            this.label11.Text = "% Comissão";
+            // 
+            // textBoxComissao
+            // 
+            this.textBoxComissao.Location = new System.Drawing.Point(529, 42);
+            this.textBoxComissao.Name = "textBoxComissao";
+            this.textBoxComissao.Size = new System.Drawing.Size(114, 20);
+            this.textBoxComissao.TabIndex = 30;
             // 
             // label10
             // 
@@ -294,22 +311,6 @@
             this.textBoxNome.Size = new System.Drawing.Size(211, 20);
             this.textBoxNome.TabIndex = 2;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(529, 26);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 13);
-            this.label11.TabIndex = 31;
-            this.label11.Text = "% Comissão";
-            // 
-            // textBoxComissao
-            // 
-            this.textBoxComissao.Location = new System.Drawing.Point(529, 42);
-            this.textBoxComissao.Name = "textBoxComissao";
-            this.textBoxComissao.Size = new System.Drawing.Size(114, 20);
-            this.textBoxComissao.TabIndex = 30;
-            // 
             // FrmMotorista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,6 +318,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMotorista";
             this.Text = "Cadastro de motoristas";
             this.Load += new System.EventHandler(this.FrmMotorista_Load);

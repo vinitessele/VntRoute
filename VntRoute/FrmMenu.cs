@@ -103,5 +103,17 @@ namespace VntRoute
             Relatorio.FrmRelCliente fr = new Relatorio.FrmRelCliente();
             fr.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FrmMotorista fr = new FrmMotorista();
+            fr.ShowDialog();
+        }
+
+        private void btnDestinos_Click(object sender, EventArgs e)
+        {
+            FrmDestino frD = new FrmDestino();
+            frD.ShowDialog();
+        }
     }
 }

@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDestino));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxBairro = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -47,15 +50,21 @@
             this.textBoxDocumento = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxBairro = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBoxDistancia = new System.Windows.Forms.TextBox();
+            this.textBoxDuracao = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.textBoxDuracao);
+            this.groupBox1.Controls.Add(this.textBoxDistancia);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.textBoxBairro);
             this.groupBox1.Controls.Add(this.label7);
@@ -78,10 +87,26 @@
             this.groupBox1.Controls.Add(this.textBoxNome);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(478, 277);
+            this.groupBox1.Size = new System.Drawing.Size(742, 277);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro de Destino";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(287, 77);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Bairro";
+            // 
+            // textBoxBairro
+            // 
+            this.textBoxBairro.Location = new System.Drawing.Point(290, 93);
+            this.textBoxBairro.Name = "textBoxBairro";
+            this.textBoxBairro.Size = new System.Drawing.Size(153, 20);
+            this.textBoxBairro.TabIndex = 6;
             // 
             // label7
             // 
@@ -105,7 +130,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.Transparent;
-            this.btnExcluir.Location = new System.Drawing.Point(378, 217);
+            this.btnExcluir.Location = new System.Drawing.Point(639, 237);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(93, 30);
             this.btnExcluir.TabIndex = 16;
@@ -120,7 +145,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.Location = new System.Drawing.Point(279, 217);
+            this.btnCancelar.Location = new System.Drawing.Point(540, 237);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 30);
             this.btnCancelar.TabIndex = 15;
@@ -134,7 +159,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSalvar.Location = new System.Drawing.Point(180, 217);
+            this.btnSalvar.Location = new System.Drawing.Point(441, 237);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(93, 30);
             this.btnSalvar.TabIndex = 14;
@@ -164,7 +189,7 @@
             this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConsultar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnConsultar.Location = new System.Drawing.Point(330, 134);
+            this.btnConsultar.Location = new System.Drawing.Point(502, 136);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(93, 29);
             this.btnConsultar.TabIndex = 11;
@@ -253,30 +278,48 @@
             this.textBoxNome.Size = new System.Drawing.Size(211, 20);
             this.textBoxNome.TabIndex = 1;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(287, 77);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Bairro";
-            // 
-            // textBoxBairro
-            // 
-            this.textBoxBairro.Location = new System.Drawing.Point(290, 93);
-            this.textBoxBairro.Name = "textBoxBairro";
-            this.textBoxBairro.Size = new System.Drawing.Size(153, 20);
-            this.textBoxBairro.TabIndex = 6;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 295);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(478, 208);
+            this.dataGridView1.Size = new System.Drawing.Size(742, 208);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
+            // 
+            // textBoxDistancia
+            // 
+            this.textBoxDistancia.Enabled = false;
+            this.textBoxDistancia.Location = new System.Drawing.Point(327, 139);
+            this.textBoxDistancia.Name = "textBoxDistancia";
+            this.textBoxDistancia.Size = new System.Drawing.Size(81, 20);
+            this.textBoxDistancia.TabIndex = 22;
+            // 
+            // textBoxDuracao
+            // 
+            this.textBoxDuracao.Enabled = false;
+            this.textBoxDuracao.Location = new System.Drawing.Point(411, 139);
+            this.textBoxDuracao.Name = "textBoxDuracao";
+            this.textBoxDuracao.Size = new System.Drawing.Size(83, 20);
+            this.textBoxDuracao.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(328, 125);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 13);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Distância";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(408, 123);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Duração";
             // 
             // FrmDestino
             // 
@@ -284,10 +327,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(502, 515);
+            this.ClientSize = new System.Drawing.Size(766, 515);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmDestino";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Cadastro Desitno";
@@ -323,5 +367,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxBairro;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxDuracao;
+        private System.Windows.Forms.TextBox textBoxDistancia;
     }
 }

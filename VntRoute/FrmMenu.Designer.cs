@@ -40,6 +40,8 @@
             this.veículoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lançamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarArquivoDeRotasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
@@ -47,8 +49,8 @@
             this.BtnCliente = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMotorista = new System.Windows.Forms.Button();
+            this.btnDestinos = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -89,7 +91,7 @@
             this.parametrosToolStripMenuItem.BackColor = System.Drawing.Color.Green;
             this.parametrosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.parametrosToolStripMenuItem.Name = "parametrosToolStripMenuItem";
-            this.parametrosToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.parametrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.parametrosToolStripMenuItem.Text = "Empresa";
             this.parametrosToolStripMenuItem.Click += new System.EventHandler(this.parametrosToolStripMenuItem_Click_1);
             // 
@@ -98,7 +100,7 @@
             this.destinosToolStripMenuItem.BackColor = System.Drawing.Color.Green;
             this.destinosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.destinosToolStripMenuItem.Name = "destinosToolStripMenuItem";
-            this.destinosToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.destinosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.destinosToolStripMenuItem.Text = "Destinos";
             this.destinosToolStripMenuItem.Click += new System.EventHandler(this.destinosToolStripMenuItem_Click);
             // 
@@ -107,7 +109,7 @@
             this.motoristasToolStripMenuItem.BackColor = System.Drawing.Color.Green;
             this.motoristasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.motoristasToolStripMenuItem.Name = "motoristasToolStripMenuItem";
-            this.motoristasToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.motoristasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.motoristasToolStripMenuItem.Text = "Motoristas";
             this.motoristasToolStripMenuItem.Click += new System.EventHandler(this.motoristasToolStripMenuItem_Click);
             // 
@@ -116,7 +118,7 @@
             this.clientesToolStripMenuItem.BackColor = System.Drawing.Color.Green;
             this.clientesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
@@ -125,7 +127,7 @@
             this.cidadeToolStripMenuItem.BackColor = System.Drawing.Color.Green;
             this.cidadeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.cidadeToolStripMenuItem.Name = "cidadeToolStripMenuItem";
-            this.cidadeToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.cidadeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cidadeToolStripMenuItem.Text = "Cidade";
             this.cidadeToolStripMenuItem.Click += new System.EventHandler(this.cidadeToolStripMenuItem_Click);
             // 
@@ -134,7 +136,7 @@
             this.estadoToolStripMenuItem.BackColor = System.Drawing.Color.Green;
             this.estadoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.estadoToolStripMenuItem.Name = "estadoToolStripMenuItem";
-            this.estadoToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.estadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.estadoToolStripMenuItem.Text = "Estado";
             this.estadoToolStripMenuItem.Click += new System.EventHandler(this.estadoToolStripMenuItem_Click);
             // 
@@ -143,7 +145,7 @@
             this.veículoToolStripMenuItem.BackColor = System.Drawing.Color.Green;
             this.veículoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.veículoToolStripMenuItem.Name = "veículoToolStripMenuItem";
-            this.veículoToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.veículoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.veículoToolStripMenuItem.Text = "Veículo";
             this.veículoToolStripMenuItem.Click += new System.EventHandler(this.veículoToolStripMenuItem_Click);
             // 
@@ -163,8 +165,28 @@
             this.importarArquivoDeRotasToolStripMenuItem.Text = "Importar Arquivo de rotas";
             this.importarArquivoDeRotasToolStripMenuItem.Click += new System.EventHandler(this.importarArquivoDeRotasToolStripMenuItem_Click);
             // 
+            // relatóriosToolStripMenuItem
+            // 
+            this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clientesToolStripMenuItem1});
+            this.relatóriosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
+            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(74, 21);
+            this.relatóriosToolStripMenuItem.Text = "Relatórios";
+            // 
+            // clientesToolStripMenuItem1
+            // 
+            this.clientesToolStripMenuItem1.BackColor = System.Drawing.Color.ForestGreen;
+            this.clientesToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.clientesToolStripMenuItem1.Text = "Clientes";
+            this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDestinos);
+            this.panel1.Controls.Add(this.btnMotorista);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnImport);
             this.panel1.Controls.Add(this.bntVeiculo);
@@ -180,7 +202,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(279, 3);
+            this.button1.Location = new System.Drawing.Point(273, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 87);
             this.button1.TabIndex = 3;
@@ -194,7 +216,7 @@
             this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
             this.btnImport.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnImport.Location = new System.Drawing.Point(190, 3);
+            this.btnImport.Location = new System.Drawing.Point(546, 3);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(85, 87);
             this.btnImport.TabIndex = 2;
@@ -208,7 +230,7 @@
             this.bntVeiculo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.bntVeiculo.Image = ((System.Drawing.Image)(resources.GetObject("bntVeiculo.Image")));
             this.bntVeiculo.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.bntVeiculo.Location = new System.Drawing.Point(101, 3);
+            this.bntVeiculo.Location = new System.Drawing.Point(99, 3);
             this.bntVeiculo.Name = "bntVeiculo";
             this.bntVeiculo.Size = new System.Drawing.Size(85, 87);
             this.bntVeiculo.TabIndex = 1;
@@ -251,23 +273,33 @@
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
-            // relatóriosToolStripMenuItem
+            // btnMotorista
             // 
-            this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clientesToolStripMenuItem1});
-            this.relatóriosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
-            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(74, 21);
-            this.relatóriosToolStripMenuItem.Text = "Relatórios";
+            this.btnMotorista.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnMotorista.Image = ((System.Drawing.Image)(resources.GetObject("btnMotorista.Image")));
+            this.btnMotorista.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMotorista.Location = new System.Drawing.Point(186, 3);
+            this.btnMotorista.Name = "btnMotorista";
+            this.btnMotorista.Size = new System.Drawing.Size(85, 87);
+            this.btnMotorista.TabIndex = 4;
+            this.btnMotorista.Text = "Motorista";
+            this.btnMotorista.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMotorista.UseVisualStyleBackColor = true;
+            this.btnMotorista.Click += new System.EventHandler(this.button2_Click);
             // 
-            // clientesToolStripMenuItem1
+            // btnDestinos
             // 
-            this.clientesToolStripMenuItem1.BackColor = System.Drawing.Color.ForestGreen;
-            this.clientesToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
-            this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.clientesToolStripMenuItem1.Text = "Clientes";
-            this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
+            this.btnDestinos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDestinos.Image = ((System.Drawing.Image)(resources.GetObject("btnDestinos.Image")));
+            this.btnDestinos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDestinos.Location = new System.Drawing.Point(458, 3);
+            this.btnDestinos.Name = "btnDestinos";
+            this.btnDestinos.Size = new System.Drawing.Size(85, 87);
+            this.btnDestinos.TabIndex = 5;
+            this.btnDestinos.Text = "Destinos";
+            this.btnDestinos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDestinos.UseVisualStyleBackColor = true;
+            this.btnDestinos.Click += new System.EventHandler(this.btnDestinos_Click);
             // 
             // FrmMenu
             // 
@@ -316,5 +348,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem1;
+        private System.Windows.Forms.Button btnMotorista;
+        private System.Windows.Forms.Button btnDestinos;
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCliente));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.textBoxEndereco = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,7 +88,24 @@
             this.groupBox1.Size = new System.Drawing.Size(776, 412);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cadastro Empresa";
+            this.groupBox1.Text = "Cadastro Clientes";
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackColor = System.Drawing.Color.White;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.Black;
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImprimir.Location = new System.Drawing.Point(644, 17);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(117, 69);
+            this.btnImprimir.TabIndex = 30;
+            this.btnImprimir.Text = "&Imprimir";
+            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // label10
             // 
@@ -97,7 +114,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 13);
             this.label10.TabIndex = 29;
-            this.label10.Text = "Cidade/Estadp";
+            this.label10.Text = "Cidade/Estado";
             // 
             // comboBox1
             // 
@@ -112,9 +129,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(413, 26);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(23, 13);
+            this.label9.Size = new System.Drawing.Size(89, 13);
             this.label9.TabIndex = 27;
-            this.label9.Text = "RG";
+            this.label9.Text = "RG/Ins. Estadual";
             // 
             // textBoxRG
             // 
@@ -128,9 +145,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(293, 26);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 13);
+            this.label8.Size = new System.Drawing.Size(59, 13);
             this.label8.TabIndex = 25;
-            this.label8.Text = "CPF";
+            this.label8.Text = "CPF/CNPJ";
             // 
             // textBoxCPF
             // 
@@ -292,23 +309,6 @@
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(211, 20);
             this.textBoxNome.TabIndex = 2;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.BackColor = System.Drawing.Color.White;
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.Color.Black;
-            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
-            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnImprimir.Location = new System.Drawing.Point(644, 17);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(117, 69);
-            this.btnImprimir.TabIndex = 30;
-            this.btnImprimir.Text = "&Imprimir";
-            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // FrmCliente
             // 

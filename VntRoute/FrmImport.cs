@@ -230,7 +230,11 @@ namespace VntRoute
                 destino.transportadora = theLines[0];
                 if (theLines[i].Contains("NF:"))
                 {
-                    destino.documento = theLines[i].Substring(3);
+
+                    if (theLines[i].Substring(3).Length > 30)
+                        destino.documento = theLines[i].Substring(3, 30);
+                    else
+                        destino.documento = theLines[i].Substring(3);
                     destino.nome = theLines[i + 1];
                     model get = new model();
                     Boolean existeDocumento = get.getDestinoDocumento(destino.documento, destino.transportadora);
@@ -491,7 +495,8 @@ namespace VntRoute
                             destino.documento = theLine.Substring(20, 9);
                             destino.nome = theLine.Substring(36);
                             int posicao = theLine.IndexOf("/") + 2;
-                            destino.bairro = theLine.Substring(posicao);
+                            if (theLine.Substring(posicao).Length > 30)
+                                destino.bairro = theLine.Substring(posicao, 30).ToUpper();
 
                             destino.documento = theLine.Substring(20, 9);
                             model get = new model();

@@ -162,10 +162,10 @@ namespace VntRoute
         {
             listBoxDestinos.Items.Clear();
             List<DtoBairro> listBairros = new List<DtoBairro>();
-            foreach (string l in checkedListBox1.CheckedItems)
+            foreach (var l in checkedListBox1.CheckedItems)
             {
                 DtoBairro b = new DtoBairro();
-                b.bairro = l;
+                b.bairro = l.ToString();
                 listBairros.Add(b);
             }
             //RotaCoordenadas(listBairros);
