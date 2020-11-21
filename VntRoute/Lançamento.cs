@@ -27,6 +27,7 @@ namespace VntRoute
                 lanc.dt_record = DateTime.Now;
                 lanc.id_cliente = Convert.ToInt16(comboBoxCliente.SelectedValue);
                 lanc.id_motorista = Convert.ToInt16(comboBoxMotorista.SelectedValue);
+                lanc.observacao = textBoxObservacao.Text;
                 if (textBoxValor.Text != string.Empty)
                     lanc.valor = float.Parse(textBoxValor.Text);
                 if (textBoxControle.Text != string.Empty)
@@ -42,11 +43,22 @@ namespace VntRoute
                     set.setLancamento(lanc);
                 }
                 MessageBox.Show("Registro salvo com sucesso");
+                limpaCampos();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        private void limpaCampos()
+        {
+            textBoxID.Text = string.Empty;
+            textBoxObservacao.Text = string.Empty;
+            textBoxControle.Text = string.Empty;
+            textBoxValor.Text = string.Empty;
+            textBoxData.Text = string.Empty;
+            textBoxData.Text = DateTime.Now.ToShortDateString();
         }
 
         private void Lançamento_Load(object sender, EventArgs e)

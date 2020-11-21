@@ -2,7 +2,6 @@
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
-using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

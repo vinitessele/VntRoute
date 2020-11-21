@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLancamento));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxObservacao = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxValor = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,6 +52,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.textBoxObservacao);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBoxValor);
             this.groupBox1.Controls.Add(this.label4);
@@ -66,10 +71,25 @@
             this.groupBox1.Controls.Add(this.textBoxData);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(504, 209);
+            this.groupBox1.Size = new System.Drawing.Size(504, 288);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lançamentos";
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(19, 107);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(164, 12);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "Observação sobre a encomenda";
+            // 
+            // textBoxObservacao
+            // 
+            this.textBoxObservacao.Location = new System.Drawing.Point(22, 122);
+            this.textBoxObservacao.Name = "textBoxObservacao";
+            this.textBoxObservacao.Size = new System.Drawing.Size(462, 20);
+            this.textBoxObservacao.TabIndex = 5;
             // 
             // label5
             // 
@@ -103,7 +123,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(19, 105);
+            this.label3.Location = new System.Drawing.Point(19, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 12);
             this.label3.TabIndex = 23;
@@ -112,10 +132,10 @@
             // comboBoxMotorista
             // 
             this.comboBoxMotorista.FormattingEnabled = true;
-            this.comboBoxMotorista.Location = new System.Drawing.Point(22, 120);
+            this.comboBoxMotorista.Location = new System.Drawing.Point(22, 177);
             this.comboBoxMotorista.Name = "comboBoxMotorista";
             this.comboBoxMotorista.Size = new System.Drawing.Size(462, 21);
-            this.comboBoxMotorista.TabIndex = 5;
+            this.comboBoxMotorista.TabIndex = 6;
             // 
             // label2
             // 
@@ -155,7 +175,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.Transparent;
-            this.btnExcluir.Location = new System.Drawing.Point(391, 159);
+            this.btnExcluir.Location = new System.Drawing.Point(391, 240);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(93, 30);
             this.btnExcluir.TabIndex = 8;
@@ -170,7 +190,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.Location = new System.Drawing.Point(292, 159);
+            this.btnCancelar.Location = new System.Drawing.Point(292, 240);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 30);
             this.btnCancelar.TabIndex = 7;
@@ -184,7 +204,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSalvar.Location = new System.Drawing.Point(193, 159);
+            this.btnSalvar.Location = new System.Drawing.Point(193, 240);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(93, 30);
             this.btnSalvar.TabIndex = 6;
@@ -212,8 +232,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(533, 236);
+            this.ClientSize = new System.Drawing.Size(533, 312);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLancamento";
             this.Text = "Lançamento";
             this.Load += new System.EventHandler(this.Lançamento_Load);
@@ -241,5 +262,7 @@
         private System.Windows.Forms.ComboBox comboBoxMotorista;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxCliente;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxObservacao;
     }
 }

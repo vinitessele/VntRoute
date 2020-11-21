@@ -142,7 +142,6 @@
             this.btnSelecionar.TabIndex = 1;
             this.btnSelecionar.Text = "Traçar Rota Google";
             this.btnSelecionar.UseVisualStyleBackColor = false;
-            this.btnSelecionar.Visible = false;
             this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
             // 
             // checkedListBox1

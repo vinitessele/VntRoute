@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Device.Location;
 
 namespace VntRoute
 {
@@ -54,7 +55,16 @@ namespace VntRoute
 
         public void alterLancamento(DtoLancamento lanc)
         {
-            throw new NotImplementedException();
+            Context db = new Context();
+            DtoLancamento c = db.lancamento.FirstOrDefault(p => p.id == lanc.id);
+            c.dt_lancamento = lanc.dt_lancamento;
+            c.dt_record = lanc.dt_record;
+            c.id_cliente = lanc.id_cliente;
+            c.id_motorista = lanc.id_motorista;
+            c.valor = lanc.valor;
+            c.nr_controle = lanc.nr_controle;
+            c.observacao = lanc.observacao;
+            db.SaveChanges();
         }
 
         public List<DtoDestino> getListaDestinos()
@@ -281,11 +291,33 @@ namespace VntRoute
             foreach (var l in listBairro)
             {
                 List<DtoDestino> listdestino = new List<DtoDestino>();
-                listdestino = db.destino.Where(p => p.status == "I" && p.bairro == l.bairro).OrderBy(p=>p.distancia).ToList();
+                listdestino = db.destino.Where(p => p.status == "I" && p.bairro == l.bairro).OrderBy(p => p.distancia).ToList();
                 listdestinos.AddRange(listdestino);
             }
-            listdestinos= listdestinos.OrderBy(p => p.distancia).OrderBy(p => p.latitude).OrderBy(p => p.longitude).ToList();
+            listdestinos = listdestinos.OrderBy(p => p.duracao).ToList();
+
+            Calcular(listdestinos);
+
+
             return listdestinos;
+        }
+
+        private void Calcular(List<DtoDestino> listdestinos)
+        {
+            List<DtoDistancias> listaDistancias = new List<DtoDistancias>();
+            foreach (var l in listdestinos)
+            {
+                foreach (var i in listdestinos)
+                {
+                    DtoDistancias d = new DtoDistancias();
+                    var locA = new GeoCoordinate(l.latitude, l.longitude);
+                    var locB = new GeoCoordinate(i.latitude, i.longitude);
+                    double distance = locA.GetDistanceTo(locB); // metros
+                    d.id = i.id;
+                    d.distancia = distance;
+                    listaDistancias.Add(d);
+                }
+            }
         }
 
         public DtoDestino getDestinoDocumento(string valor)
@@ -375,7 +407,7 @@ namespace VntRoute
                         string endEndereco = dsResult.Tables["leg"].Rows[i]["end_address"].ToString();
                         r.start_address = startEndereco;
                         r.end_address = endEndereco;
-                        r.waypoint_order = i;
+                        //r.waypoint_order = i;
                         DtoLatLong latlongstart = GetLatLongGoogle(startEndereco);
                         //DtoLatLong latlongstart = GetLatLongBD(startEndereco);
                         try
@@ -427,7 +459,7 @@ namespace VntRoute
             }
             catch (Exception)
             {
-                 origin = "Rua Carlos DallAgnolo 121,Toledo, PR";
+                origin = "Rua Carlos DallAgnolo 121,Toledo, PR";
             }
             string requestUriCordenadas = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?address=" + text + "&key=AIzaSyAwjnJzF57fQddVy_dL8yTC01Zw7ufVuY8", Uri.EscapeDataString(text));
             string requestUriDistancia = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + origin + "&destinations=" + text + "&key=AIzaSyCNiXQqjhm3GQ83i2FmXXo835XUOfylz6c";
@@ -468,7 +500,7 @@ namespace VntRoute
         public List<DtoDestino> getListDestino()
         {
             Context db = new Context();
-            return db.destino.Where(p => p.id_rota == 0).OrderBy(p=>p.latitude).OrderBy(p => p.distancia).ToList();
+            return db.destino.Where(p => p.id_rota == 0).OrderBy(p => p.latitude).OrderBy(p => p.distancia).ToList();
         }
 
         public DtoLatLong getLatLngEndereco(string text)
