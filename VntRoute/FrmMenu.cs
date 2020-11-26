@@ -115,5 +115,11 @@ namespace VntRoute
             FrmDestino frD = new FrmDestino();
             frD.ShowDialog();
         }
+
+        private void movimentaçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Relatorio.FrmRelLancamentos fr = new Relatorio.FrmRelLancamentos();
+            fr.ShowDialog();
+        }
     }
 }

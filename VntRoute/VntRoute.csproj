@@ -163,6 +163,7 @@
   <ItemGroup>
     <Compile Include="DtoDistancias.cs" />
     <Compile Include="DtoBairro.cs" />
+    <Compile Include="DtoLancamento2 .cs" />
     <Compile Include="DtoLancamento .cs" />
     <Compile Include="DtoCidadeMap.cs" />
     <Compile Include="DtoCidade.cs" />
@@ -265,6 +266,12 @@
     <Compile Include="Relatorio\FrmRelCliente.Designer.cs">
       <DependentUpon>FrmRelCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorio\FrmRelLancamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorio\FrmRelLancamentos.Designer.cs">
+      <DependentUpon>FrmRelLancamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="FrmCidade.resx">
       <DependentUpon>FrmCidade.cs</DependentUpon>
@@ -317,11 +324,16 @@
     <EmbeddedResource Include="Relatorio\FrmRelCliente.resx">
       <DependentUpon>FrmRelCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorio\FrmRelLancamentos.resx">
+      <DependentUpon>FrmRelLancamentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorio\RepListaClientes.rdlc" />
     <EmbeddedResource Include="Relatorio\ReportDestinos.rdlc" />
+    <EmbeddedResource Include="Relatorio\ReportLancamento.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DtoCliente.datasource" />
     <None Include="Properties\DataSources\DtoDestino.datasource" />
+    <None Include="Properties\DataSources\DtoLancamento2.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -47,7 +47,11 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxData = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxPesquisa = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -71,22 +75,22 @@
             this.groupBox1.Controls.Add(this.textBoxData);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(504, 288);
+            this.groupBox1.Size = new System.Drawing.Size(504, 257);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lançamentos";
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(19, 107);
+            this.label6.Location = new System.Drawing.Point(19, 115);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(164, 12);
+            this.label6.Size = new System.Drawing.Size(164, 14);
             this.label6.TabIndex = 29;
             this.label6.Text = "Observação sobre a encomenda";
             // 
             // textBoxObservacao
             // 
-            this.textBoxObservacao.Location = new System.Drawing.Point(22, 122);
+            this.textBoxObservacao.Location = new System.Drawing.Point(22, 130);
             this.textBoxObservacao.Name = "textBoxObservacao";
             this.textBoxObservacao.Size = new System.Drawing.Size(462, 20);
             this.textBoxObservacao.TabIndex = 5;
@@ -175,7 +179,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.Transparent;
-            this.btnExcluir.Location = new System.Drawing.Point(391, 240);
+            this.btnExcluir.Location = new System.Drawing.Point(390, 217);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(93, 30);
             this.btnExcluir.TabIndex = 8;
@@ -190,7 +194,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.Location = new System.Drawing.Point(292, 240);
+            this.btnCancelar.Location = new System.Drawing.Point(291, 217);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 30);
             this.btnCancelar.TabIndex = 7;
@@ -204,7 +208,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSalvar.Location = new System.Drawing.Point(193, 240);
+            this.btnSalvar.Location = new System.Drawing.Point(192, 217);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(93, 30);
             this.btnSalvar.TabIndex = 6;
@@ -227,12 +231,44 @@
             this.textBoxData.Size = new System.Drawing.Size(101, 20);
             this.textBoxData.TabIndex = 1;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 316);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(504, 149);
+            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 286);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Pesquisa";
+            // 
+            // textBoxPesquisa
+            // 
+            this.textBoxPesquisa.Location = new System.Drawing.Point(68, 283);
+            this.textBoxPesquisa.Name = "textBoxPesquisa";
+            this.textBoxPesquisa.Size = new System.Drawing.Size(448, 20);
+            this.textBoxPesquisa.TabIndex = 8;
+            this.textBoxPesquisa.TextChanged += new System.EventHandler(this.textBoxPesquisa_TextChanged);
+            // 
             // frmLancamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(533, 312);
+            this.ClientSize = new System.Drawing.Size(537, 480);
+            this.Controls.Add(this.textBoxPesquisa);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLancamento";
@@ -240,7 +276,9 @@
             this.Load += new System.EventHandler(this.Lançamento_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -264,5 +302,8 @@
         private System.Windows.Forms.ComboBox comboBoxCliente;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxObservacao;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxPesquisa;
     }
 }

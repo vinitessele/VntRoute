@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace VntRoute
@@ -44,6 +39,7 @@ namespace VntRoute
                 }
                 MessageBox.Show("Registro salvo com sucesso");
                 limpaCampos();
+                CarregarGrid();
             }
             catch (Exception ex)
             {
@@ -76,6 +72,19 @@ namespace VntRoute
             comboBoxMotorista.ValueMember = "id";
             comboBoxMotorista.DisplayMember = "nome";
             comboBoxMotorista.DataSource = ListMotorista;
+
+            CarregarGrid();
+        }
+
+        private void CarregarGrid()
+        {
+            model get = new model();
+            List<DtoLancamento> d = get.getLancamentosLimited();
+            dataGridView1.DataSource = null;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.DataSource = d;
+            dataGridView1.Refresh();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -95,6 +104,43 @@ namespace VntRoute
             {
                 throw ex;
             }
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            int ID = (Int32)dataGridView1.CurrentRow.Cells[0].Value;
+
+            model get = new model();
+            DtoLancamento2 d = get.getLancamentosId(ID);
+            textBoxID.Text = d.id.ToString();
+            textBoxData.Text = d.dt_lancamento.ToString();
+            textBoxControle.Text = d.nr_controle.ToString();
+            textBoxValor.Text = d.valor.ToString();
+            textBoxObservacao.Text = d.observacao.ToString();
+            comboBoxCliente.SelectedValue = d.id_cliente.Value;
+            comboBoxMotorista.SelectedValue = d.id_motorista.Value;
+        }
+
+        private void textBoxPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            model get = new model();
+
+            string verifica = "^[0-9]";
+            List<DtoLancamento2> d = new List<DtoLancamento2>();
+            if (Regex.IsMatch(textBoxPesquisa.Text, verifica))
+            {
+                d = get.getLancamentoControle(textBoxPesquisa.Text);
+            }
+            else
+            {
+                 d = get.getLancamentoNomeCliente(textBoxPesquisa.Text);
+            }
+
+            dataGridView1.DataSource = null;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.DataSource = d;
+            dataGridView1.Refresh();
         }
     }
 }

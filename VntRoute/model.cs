@@ -73,6 +73,56 @@ namespace VntRoute
             return db.destino.Where(p => p.status == "I").ToList();
         }
 
+        public List<DtoLancamento2> getLancamentoFiltro(string tipo, string dtinicio, string dtfim, int id)
+        {
+            DateTime dtInicio = DateTime.Parse(dtinicio);
+            DateTime dtFim = DateTime.Parse(dtfim);
+
+            if (tipo == "cliente")
+            {
+                Context db = new Context();
+                var q = (from l in db.lancamento
+                         join m in db.motorista on l.id_motorista equals m.id
+                         join c in db.cliente on l.id_cliente equals c.id
+                         where l.id_cliente == id && (l.dt_lancamento >= dtInicio && l.dt_lancamento < dtFim)
+                         select new DtoLancamento2
+                         {
+                             id = l.id,
+                             dt_lancamento = l.dt_lancamento,
+                             nr_controle = l.nr_controle,
+                             valor = l.valor,
+                             id_cliente = c.id,
+                             cliente = c.nome,
+                             id_motorista = m.id,
+                             motorista = m.nome,
+                             observacao = l.observacao
+                         }).ToList();
+                return q;
+            }
+            else
+            {
+                Context db = new Context();
+                var q = (from l in db.lancamento
+                         join m in db.motorista on l.id_motorista equals m.id
+                         join c in db.cliente on l.id_cliente equals c.id
+                         where l.id_motorista == id && (l.dt_lancamento >= dtInicio && l.dt_lancamento < dtFim)
+                         select new DtoLancamento2
+                         {
+                             id = l.id,
+                             dt_lancamento = l.dt_lancamento,
+                             nr_controle = l.nr_controle,
+                             valor = l.valor,
+                             id_cliente = c.id,
+                             cliente = c.nome,
+                             id_motorista = m.id,
+                             motorista = m.nome,
+                             observacao = l.observacao
+                         }).ToList();
+                return q;
+            }
+            
+        }
+
         public void DeleteCliente(string id)
         {
             Context db = new Context();
@@ -104,6 +154,13 @@ namespace VntRoute
             c.observacoes = cli.observacoes;
             c.complemento = cli.complemento;
             db.SaveChanges();
+        }
+
+        public List<DtoLancamento> getLancamentosLimited()
+        {
+            Context db = new Context();
+            var e = db.lancamento.ToList().Take(20);
+            return e.ToList();
         }
 
         public void DeleteLancamento(string id)
@@ -140,6 +197,27 @@ namespace VntRoute
             db.SaveChanges();
         }
 
+        public DtoLancamento2 getLancamentosId(int iD)
+        {
+            Context db = new Context();
+            var q = from l in db.lancamento
+                    join m in db.motorista on l.id_motorista equals m.id
+                    join c in db.cliente on l.id_cliente equals c.id
+                    select new DtoLancamento2
+                    {
+                        id = l.id,
+                        dt_lancamento = l.dt_lancamento,
+                        nr_controle = l.nr_controle,
+                        valor = l.valor,
+                        id_cliente = c.id,
+                        cliente = c.nome,
+                        id_motorista = m.id,
+                        motorista = m.nome,
+                        observacao = l.observacao
+                    };
+            return q.FirstOrDefault();
+        }
+
         public List<DtoDestino> getListaDestinosLimit(List<DtoBairro> listBairro)
         {
             Context db = new Context();
@@ -151,6 +229,51 @@ namespace VntRoute
                 listdestinos.AddRange(listdestino);
             }
             return listdestinos;
+        }
+
+        internal List<DtoLancamento2> getLancamentoNomeCliente(string nome)
+        {
+            Context db = new Context();
+            var q = (from l in db.lancamento
+                    join m in db.motorista on l.id_motorista equals m.id
+                    join c in db.cliente on l.id_cliente equals c.id
+                    where c.nome.Contains(nome)
+                    select new DtoLancamento2
+                    {
+                        id = l.id,
+                        dt_lancamento = l.dt_lancamento,
+                        nr_controle = l.nr_controle,
+                        valor = l.valor,
+                        id_cliente = c.id,
+                        cliente = c.nome,
+                        id_motorista = m.id,
+                        motorista = m.nome,
+                        observacao = l.observacao
+                    }).ToList();
+            return q;
+        }
+
+        public List<DtoLancamento2> getLancamentoControle(string nr_controle)
+        {
+            int controle = int.Parse(nr_controle);
+            Context db = new Context();
+            var q = (from l in db.lancamento
+                     join m in db.motorista on l.id_motorista equals m.id
+                     join c in db.cliente on l.id_cliente equals c.id
+                     where l.nr_controle == controle
+                     select new DtoLancamento2
+                     {
+                         id = l.id,
+                         dt_lancamento = l.dt_lancamento,
+                         nr_controle = l.nr_controle,
+                         valor = l.valor,
+                         id_cliente = c.id,
+                         cliente = c.nome,
+                         id_motorista = m.id,
+                         motorista = m.nome,
+                         observacao = l.observacao
+                     }).ToList();
+            return q;
         }
 
         internal List<DtoCidadeMap> getAllCidades()
@@ -305,9 +428,13 @@ namespace VntRoute
         private void Calcular(List<DtoDestino> listdestinos)
         {
             List<DtoDistancias> listaDistancias = new List<DtoDistancias>();
+            List<DtoDestino> list = new List<DtoDestino>();
+            List<DtoDestino> listRetorno = new List<DtoDestino>();
+            DtoDestino menorDistancia = new DtoDestino();
+            list = listdestinos;
             foreach (var l in listdestinos)
             {
-                foreach (var i in listdestinos)
+                foreach (var i in list)
                 {
                     DtoDistancias d = new DtoDistancias();
                     var locA = new GeoCoordinate(l.latitude, l.longitude);
@@ -317,6 +444,8 @@ namespace VntRoute
                     d.distancia = distance;
                     listaDistancias.Add(d);
                 }
+                listaDistancias = listaDistancias.OrderBy(p => p.distancia).ToList();
+                listRetorno.Add(l);
             }
         }
 

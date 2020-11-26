@@ -6,39 +6,48 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.19546cm</Width>
+              <Width>2.34654cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.5713cm</Width>
+              <Width>2.45238cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>8.5665cm</Width>
+              <Width>4.48967cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.09488cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>7.02967cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.64792cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox8">
+                    <Textbox Name="dt_lancamento">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Documento</Value>
-                              <Style />
+                              <Value>=Fields!dt_lancamento.Value</Value>
+                              <Style>
+                                <Format>dd/MM/yyyy</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox8</rd:DefaultName>
+                      <rd:DefaultName>dt_lancamento</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>White</Color>
                           <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -51,24 +60,23 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox10">
+                    <Textbox Name="nr_controle">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Nome</Value>
+                              <Value>=Fields!nr_controle.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox10</rd:DefaultName>
+                      <rd:DefaultName>nr_controle</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>White</Color>
                           <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -81,59 +89,23 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox12">
+                    <Textbox Name="motorista">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Endereço</Value>
+                              <Value>=Fields!motorista.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox12</rd:DefaultName>
+                      <rd:DefaultName>motorista</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>White</Color>
-                          <Style>None</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-              </TablixCells>
-            </TablixRow>
-            <TablixRow>
-              <Height>0.6cm</Height>
-              <TablixCells>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="documento">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!documento.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>documento</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>White</Color>
                           <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -146,24 +118,25 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="nome">
+                    <Textbox Name="valor">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!nome.Value</Value>
-                              <Style />
+                              <Value>=Fields!valor.Value</Value>
+                              <Style>
+                                <Format>{0:\00\.0000}</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>nome</rd:DefaultName>
+                      <rd:DefaultName>valor</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>White</Color>
                           <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -172,28 +145,28 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="endereco">
+                    <Textbox Name="observacao">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!endereco.Value</Value>
+                              <Value>=Fields!observacao.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>endereco</rd:DefaultName>
+                      <rd:DefaultName>observacao</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>White</Color>
                           <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
@@ -213,30 +186,30 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
-              <KeepWithGroup>After</KeepWithGroup>
-            </TablixMember>
-            <TablixMember>
               <Group Name="Detalhes" />
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <RepeatColumnHeaders>true</RepeatColumnHeaders>
         <RepeatRowHeaders>true</RepeatRowHeaders>
-        <FixedColumnHeaders>true</FixedColumnHeaders>
-        <FixedRowHeaders>true</FixedRowHeaders>
-        <DataSetName>DataSetEntregas</DataSetName>
+        <KeepTogether>true</KeepTogether>
+        <DataSetName>DtoLancamento</DataSetName>
         <PageBreak>
           <BreakLocation>End</BreakLocation>
         </PageBreak>
-        <Top>0.3017cm</Top>
-        <Left>0.08149cm</Left>
-        <Height>1.2cm</Height>
-        <Width>16.33326cm</Width>
+        <Top>0.17639cm</Top>
+        <Left>0.36724cm</Left>
+        <Height>0.64792cm</Height>
+        <Width>18.41313cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -244,17 +217,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.78125in</Height>
-    <Style>
-      <Border>
-        <Style>None</Style>
-      </Border>
-    </Style>
+    <Height>3.05208in</Height>
+    <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>7.39385in</Width>
   <Page>
     <PageHeader>
-      <Height>1.997cm</Height>
+      <Height>2.66057cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -273,43 +242,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Left>0.08149cm</Left>
+          <Top>0.12415cm</Top>
+          <Left>0.36724cm</Left>
           <Height>0.6cm</Height>
           <Width>8.33438cm</Width>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox2">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>Relação de entregas</Value>
-                  <Style>
-                    <FontFamily>Arial Black</FontFamily>
-                    <FontSize>14pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.77354cm</Top>
-          <Height>0.94382cm</Height>
-          <Width>16.51cm</Width>
-          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -335,10 +271,82 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Left>14.11287cm</Left>
+          <Top>0.12415cm</Top>
+          <Left>16.47849cm</Left>
           <Height>0.6cm</Height>
           <Width>2.30188cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="TextboxEmpresa">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Empresa</Value>
+                  <Style>
+                    <FontFamily>Arial Black</FontFamily>
+                    <FontSize>12pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>0.79809cm</Top>
+          <Height>0.73215cm</Height>
+          <Width>18.78037cm</Width>
           <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="TextboxRelatorio">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Relatório </Value>
+                  <Style />
+                </TextRun>
+                <TextRun>
+                  <Value>=Fields!cliente.Value</Value>
+                  <Style />
+                </TextRun>
+                <TextRun>
+                  <Value xml:space="preserve"> </Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <Top>1.6008cm</Top>
+          <Height>0.6cm</Height>
+          <Width>18.78037cm</Width>
+          <ZIndex>3</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -382,76 +390,64 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>08afa3fb-98d7-48a2-89ed-36cd5a63e8d1</rd:DataSourceID>
+      <rd:DataSourceID>d18fe7cf-0973-4b86-817f-a7b9db0c439d</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSetEntregas">
+    <DataSet Name="DtoLancamento">
       <Query>
         <DataSourceName>VntRoute</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="bairro">
-          <DataField>bairro</DataField>
+        <Field Name="cliente">
+          <DataField>cliente</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="distancia">
-          <DataField>distancia</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+        <Field Name="dt_lancamento">
+          <DataField>dt_lancamento</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="documento">
-          <DataField>documento</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="duracao">
-          <DataField>duracao</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="endereco">
-          <DataField>endereco</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="dt_record">
+          <DataField>dt_record</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="id">
           <DataField>id</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="id_rota">
-          <DataField>id_rota</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
+        <Field Name="id_cliente">
+          <DataField>id_cliente</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="latitude">
-          <DataField>latitude</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
+        <Field Name="id_motorista">
+          <DataField>id_motorista</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="longitude">
-          <DataField>longitude</DataField>
-          <rd:TypeName>System.Double</rd:TypeName>
-        </Field>
-        <Field Name="nome">
-          <DataField>nome</DataField>
+        <Field Name="motorista">
+          <DataField>motorista</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nr_controle">
+          <DataField>nr_controle</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="observacao">
           <DataField>observacao</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="status">
-          <DataField>status</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="transportadora">
-          <DataField>transportadora</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="valor">
+          <DataField>valor</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>VntRoute</rd:DataSetName>
-        <rd:TableName>DtoDestino</rd:TableName>
-        <rd:ObjectDataSourceType>VntRoute.DtoDestino, VntRoute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>DtoLancamento2</rd:TableName>
+        <rd:ObjectDataSourceType>VntRoute.DtoLancamento2, VntRoute, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>19122e37-9ee8-4ee2-aab5-4a1a422186a8</rd:ReportID>
+  <rd:ReportID>be00820a-ac4e-4418-a906-8e7ede5643df</rd:ReportID>
 </Report>
