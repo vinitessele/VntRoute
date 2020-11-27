@@ -120,7 +120,7 @@ namespace VntRoute
                          }).ToList();
                 return q;
             }
-            
+
         }
 
         public void DeleteCliente(string id)
@@ -235,21 +235,21 @@ namespace VntRoute
         {
             Context db = new Context();
             var q = (from l in db.lancamento
-                    join m in db.motorista on l.id_motorista equals m.id
-                    join c in db.cliente on l.id_cliente equals c.id
-                    where c.nome.Contains(nome)
-                    select new DtoLancamento2
-                    {
-                        id = l.id,
-                        dt_lancamento = l.dt_lancamento,
-                        nr_controle = l.nr_controle,
-                        valor = l.valor,
-                        id_cliente = c.id,
-                        cliente = c.nome,
-                        id_motorista = m.id,
-                        motorista = m.nome,
-                        observacao = l.observacao
-                    }).ToList();
+                     join m in db.motorista on l.id_motorista equals m.id
+                     join c in db.cliente on l.id_cliente equals c.id
+                     where c.nome.Contains(nome)
+                     select new DtoLancamento2
+                     {
+                         id = l.id,
+                         dt_lancamento = l.dt_lancamento,
+                         nr_controle = l.nr_controle,
+                         valor = l.valor,
+                         id_cliente = c.id,
+                         cliente = c.nome,
+                         id_motorista = m.id,
+                         motorista = m.nome,
+                         observacao = l.observacao
+                     }).ToList();
             return q;
         }
 
@@ -419,34 +419,44 @@ namespace VntRoute
             }
             listdestinos = listdestinos.OrderBy(p => p.duracao).ToList();
 
-            Calcular(listdestinos);
+            List<DtoDestino>  list = Calcular(listdestinos);
 
 
-            return listdestinos;
+            return list;
         }
 
-        private void Calcular(List<DtoDestino> listdestinos)
+        private List<DtoDestino> Calcular(List<DtoDestino> listdestinos)
         {
-            List<DtoDistancias> listaDistancias = new List<DtoDistancias>();
             List<DtoDestino> list = new List<DtoDestino>();
-            List<DtoDestino> listRetorno = new List<DtoDestino>();
-            DtoDestino menorDistancia = new DtoDestino();
-            list = listdestinos;
-            foreach (var l in listdestinos)
+            list.Add(listdestinos[0]);
+            listdestinos.Remove(listdestinos[0]);
+            int tamanhoDaLista = listdestinos.Count;
+            double distanciamenor = 0;
+            int indice = 0;
+            DtoDestino menor = new DtoDestino();
+            while (indice< tamanhoDaLista)
             {
-                foreach (var i in list)
+                var locA = new GeoCoordinate(list[indice].latitude, list[indice].longitude);
+                for (int i = 0; i < listdestinos.Count; i++)
                 {
-                    DtoDistancias d = new DtoDistancias();
-                    var locA = new GeoCoordinate(l.latitude, l.longitude);
-                    var locB = new GeoCoordinate(i.latitude, i.longitude);
+                    var locB = new GeoCoordinate(listdestinos[i].latitude, listdestinos[i].longitude);
                     double distance = locA.GetDistanceTo(locB); // metros
-                    d.id = i.id;
-                    d.distancia = distance;
-                    listaDistancias.Add(d);
+                    if (i == 0)
+                    {
+                        menor = listdestinos[i];
+                        distanciamenor = distance;
+                    }
+                    else if (distance < distanciamenor)
+                    {
+                        menor = listdestinos[i];
+                        distanciamenor = distance;
+                    }
                 }
-                listaDistancias = listaDistancias.OrderBy(p => p.distancia).ToList();
-                listRetorno.Add(l);
-            }
+                list.Add(menor);
+                listdestinos.Remove(menor);
+                indice++;
+            } 
+            return list;
         }
 
         public DtoDestino getDestinoDocumento(string valor)

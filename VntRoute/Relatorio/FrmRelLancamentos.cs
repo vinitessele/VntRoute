@@ -1,12 +1,6 @@
 ﻿using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VntRoute.Relatorio
@@ -28,9 +22,18 @@ namespace VntRoute.Relatorio
             DateTime ultimoDiaDoMes = new DateTime(data.Year, data.Month, DateTime.DaysInMonth(data.Year, data.Month));
             textBoxInicial.Text = primeiroDiaDoMes.ToShortDateString();
             textBoxFinal.Text = ultimoDiaDoMes.ToShortDateString();
+            model get = new model();
+
+            CarregarClientes();
+
         }
 
         private void radioButtonCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            CarregarClientes();
+        }
+
+        private void CarregarClientes()
         {
             model get = new model();
             List<DtoCliente> ListClientes = get.getAllClientes();
@@ -41,6 +44,11 @@ namespace VntRoute.Relatorio
         }
 
         private void radioButtonEntregador_CheckedChanged(object sender, EventArgs e)
+        {
+            CarregarMMotoristas();
+        }
+
+        private void CarregarMMotoristas()
         {
             model get = new model();
             List<DtoMotorista> ListMotorista = get.getAllMotorista();
@@ -62,6 +70,8 @@ namespace VntRoute.Relatorio
                 list = get.getLancamentoFiltro("cliente", textBoxInicial.Text, textBoxFinal.Text, id_nome);
             else
                 list = get.getLancamentoFiltro("entregador", textBoxInicial.Text, textBoxFinal.Text, id_nome);
+
+            DtoEmpresa empresa = get.getEndEmpresa();
 
             ReportDataSource rs = new ReportDataSource();
             this.reportViewer1.LocalReport.DataSources.Add(rs);
