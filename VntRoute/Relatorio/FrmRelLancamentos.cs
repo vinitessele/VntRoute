@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 
 namespace VntRoute.Relatorio
 {
@@ -22,7 +23,6 @@ namespace VntRoute.Relatorio
             DateTime ultimoDiaDoMes = new DateTime(data.Year, data.Month, DateTime.DaysInMonth(data.Year, data.Month));
             textBoxInicial.Text = primeiroDiaDoMes.ToShortDateString();
             textBoxFinal.Text = ultimoDiaDoMes.ToShortDateString();
-            model get = new model();
 
             CarregarClientes();
 
@@ -71,13 +71,20 @@ namespace VntRoute.Relatorio
             else
                 list = get.getLancamentoFiltro("entregador", textBoxInicial.Text, textBoxFinal.Text, id_nome);
 
-            DtoEmpresa empresa = get.getEndEmpresa();
-
             ReportDataSource rs = new ReportDataSource();
             this.reportViewer1.LocalReport.DataSources.Add(rs);
             rs.Name = "DtoLancamento";
             rs.Value = list;
+            
+            DtoEmpresa empresa = get.getEndEmpresa();
+            this.reportViewer1.LocalReport.SetParameters(new ReportParameter("Empresa", empresa.nome));
+            this.reportViewer1.LocalReport.SetParameters(new ReportParameter("Cliente", comboBoxNome.Text));
             this.reportViewer1.RefreshReport();
+        }
+
+        private void FrmRelLancamentos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

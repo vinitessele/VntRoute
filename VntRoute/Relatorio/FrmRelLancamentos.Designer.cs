@@ -182,6 +182,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRelLancamentos";
             this.Text = "Lançamentos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmRelLancamentos_FormClosed);
             this.Load += new System.EventHandler(this.FrmRelLancamentos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

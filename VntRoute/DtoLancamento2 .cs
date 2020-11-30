@@ -12,7 +12,8 @@ namespace VntRoute
         public int? id_cliente { get; set; }
         public string cliente { get; set; }
         public int? nr_controle { get; set; }
-        public float? valor { get; set; }
+        public double? comissao { get; set; }
+        public double? valor { get; set; }
         public string observacao { get; set; }
     }
 }

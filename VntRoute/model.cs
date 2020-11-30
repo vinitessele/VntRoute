@@ -111,12 +111,13 @@ namespace VntRoute
                              id = l.id,
                              dt_lancamento = l.dt_lancamento,
                              nr_controle = l.nr_controle,
-                             valor = l.valor,
+                             valor = (l.valor* (m.comissao/100)),
                              id_cliente = c.id,
                              cliente = c.nome,
                              id_motorista = m.id,
+                             comissao = m.comissao,
                              motorista = m.nome,
-                             observacao = l.observacao
+                             observacao = c.nome+" "+l.observacao
                          }).ToList();
                 return q;
             }
