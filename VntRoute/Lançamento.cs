@@ -79,7 +79,7 @@ namespace VntRoute
         private void CarregarGrid()
         {
             model get = new model();
-            List<DtoLancamento> d = get.getLancamentosLimited();
+            List<DtoLancamento2> d = get.getLancamentosLimited();
             dataGridView1.DataSource = null;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
@@ -97,7 +97,10 @@ namespace VntRoute
             try
             {
                 model delete = new model();
-                delete.DeleteLancamento(textBoxID.Text);
+                if (textBoxID.Text != string.Empty)
+                    delete.DeleteLancamento(textBoxID.Text);
+                else
+                    MessageBox.Show("Selecione um registro");
                 this.Close();
             }
             catch (Exception ex)
@@ -133,7 +136,7 @@ namespace VntRoute
             }
             else
             {
-                 d = get.getLancamentoNomeCliente(textBoxPesquisa.Text);
+                d = get.getLancamentoNomeCliente(textBoxPesquisa.Text);
             }
 
             dataGridView1.DataSource = null;

@@ -53,6 +53,60 @@ namespace VntRoute
             db.SaveChanges();
         }
 
+        public List<DtoResultado> MovimentacaoMotoristas(string dtinicio, string dtfim)
+        {
+            DateTime dtInicio = DateTime.Parse(dtinicio);
+            DateTime dtFim = DateTime.Parse(dtfim);
+
+            Context db = new Context();
+            List<DtoMotorista> motorista = db.motorista.ToList();
+            List<DtoResultado> newList = new List<DtoResultado>();
+            foreach (var mo in motorista)
+            {
+                var q = (from l in db.lancamento
+                         join m in db.motorista on l.id_motorista equals m.id
+                         where l.id_motorista == mo.id
+                         && (l.dt_lancamento >= dtInicio
+                         && l.dt_lancamento <= dtFim)
+                         group l by new { m.nome, m.comissao } into g
+                         select new DtoResultado
+                         {
+                             valor = g.Sum(p => p.valor * (g.Key.comissao / 100)),
+                             nome = g.Key.nome,
+                             comissao = g.Key.comissao
+
+                         }).FirstOrDefault();
+                if (q != null)
+                    newList.Add(q);
+            }
+            return newList;
+        }
+
+        public List<DtoResultado> getLancamento(string dtinicio, string dtfim)
+        {
+            DateTime dtInicio = DateTime.Parse(dtinicio);
+            DateTime dtFim = DateTime.Parse(dtfim);
+            Context db = new Context();
+            var q = (from l in db.lancamento
+                     join c in db.cliente on l.id_cliente equals c.id
+                     where (l.dt_lancamento >= dtInicio
+                         && l.dt_lancamento <= dtFim)
+                     group l by c.nome into g
+                     select new DtoResultado
+                     {
+                         valor = g.Sum(p => p.valor),
+                         nome = g.Key,
+                     }).ToList();
+            return q;
+        }
+
+        public List<DtoMotorista> getMotoristasAll()
+        {
+            Context db = new Context();
+            List<DtoMotorista> m = db.motorista.ToList();
+            return m;
+        }
+
         public void alterLancamento(DtoLancamento lanc)
         {
             Context db = new Context();
@@ -65,6 +119,20 @@ namespace VntRoute
             c.nr_controle = lanc.nr_controle;
             c.observacao = lanc.observacao;
             db.SaveChanges();
+        }
+
+        public DtoMotorista getMotoristaId(int iD)
+        {
+            Context db = new Context();
+            DtoMotorista m = db.motorista.FirstOrDefault(p => p.id == iD);
+            return m;
+        }
+
+        public List<DtoMotorista> getMotoristaNome(string nome)
+        {
+            Context db = new Context();
+            List<DtoMotorista> m = db.motorista.Where(p => p.nome.Contains(nome)).ToList();
+            return m;
         }
 
         public List<DtoDestino> getListaDestinos()
@@ -84,7 +152,7 @@ namespace VntRoute
                 var q = (from l in db.lancamento
                          join m in db.motorista on l.id_motorista equals m.id
                          join c in db.cliente on l.id_cliente equals c.id
-                         where l.id_cliente == id && (l.dt_lancamento >= dtInicio && l.dt_lancamento < dtFim)
+                         where l.id_cliente == id && (l.dt_lancamento >= dtInicio && l.dt_lancamento <= dtFim)
                          select new DtoLancamento2
                          {
                              id = l.id,
@@ -97,7 +165,7 @@ namespace VntRoute
                              motorista = m.nome,
                              observacao = l.observacao
                          }).ToList();
-                return q;
+                return q.OrderBy(p => p.dt_lancamento).ToList();
             }
             else
             {
@@ -111,15 +179,15 @@ namespace VntRoute
                              id = l.id,
                              dt_lancamento = l.dt_lancamento,
                              nr_controle = l.nr_controle,
-                             valor = (l.valor* (m.comissao/100)),
+                             valor = (l.valor * (m.comissao / 100)),
                              id_cliente = c.id,
                              cliente = c.nome,
                              id_motorista = m.id,
                              comissao = m.comissao,
                              motorista = m.nome,
-                             observacao = c.nome+" "+l.observacao
+                             observacao = c.nome + " " + l.observacao
                          }).ToList();
-                return q;
+                return q.OrderBy(p => p.dt_lancamento).ToList();
             }
 
         }
@@ -157,17 +225,32 @@ namespace VntRoute
             db.SaveChanges();
         }
 
-        public List<DtoLancamento> getLancamentosLimited()
+        public List<DtoLancamento2> getLancamentosLimited()
         {
             Context db = new Context();
-            var e = db.lancamento.ToList().Take(20);
-            return e.ToList();
+            var q = (from l in db.lancamento
+                     join m in db.motorista on l.id_motorista equals m.id
+                     join c in db.cliente on l.id_cliente equals c.id
+                     select new DtoLancamento2
+                     {
+                         id = l.id,
+                         dt_lancamento = l.dt_lancamento,
+                         nr_controle = l.nr_controle,
+                         valor = l.valor,
+                         cliente = c.nome,
+                         motorista = m.nome,
+                         observacao = l.observacao,
+                         id_cliente = c.id,
+                         id_motorista = m.id
+                     }).ToList();
+            return q;
         }
 
         public void DeleteLancamento(string id)
         {
+            int iD = int.Parse(id);
             Context db = new Context();
-            DtoLancamento e = db.lancamento.FirstOrDefault(p => p.id == int.Parse(id));
+            DtoLancamento e = db.lancamento.Where(p => p.id == iD).FirstOrDefault();
             db.lancamento.Remove(e);
             db.SaveChanges();
         }
@@ -204,6 +287,7 @@ namespace VntRoute
             var q = from l in db.lancamento
                     join m in db.motorista on l.id_motorista equals m.id
                     join c in db.cliente on l.id_cliente equals c.id
+                    where l.id == iD
                     select new DtoLancamento2
                     {
                         id = l.id,
@@ -420,7 +504,7 @@ namespace VntRoute
             }
             listdestinos = listdestinos.OrderBy(p => p.duracao).ToList();
 
-            List<DtoDestino>  list = Calcular(listdestinos);
+            List<DtoDestino> list = Calcular(listdestinos);
 
 
             return list;
@@ -435,7 +519,7 @@ namespace VntRoute
             double distanciamenor = 0;
             int indice = 0;
             DtoDestino menor = new DtoDestino();
-            while (indice< tamanhoDaLista)
+            while (indice < tamanhoDaLista)
             {
                 var locA = new GeoCoordinate(list[indice].latitude, list[indice].longitude);
                 for (int i = 0; i < listdestinos.Count; i++)
@@ -456,7 +540,7 @@ namespace VntRoute
                 list.Add(menor);
                 listdestinos.Remove(menor);
                 indice++;
-            } 
+            }
             return list;
         }
 

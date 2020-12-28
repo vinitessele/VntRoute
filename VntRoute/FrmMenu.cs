@@ -121,5 +121,21 @@ namespace VntRoute
             Relatorio.FrmRelLancamentos fr = new Relatorio.FrmRelLancamentos();
             fr.ShowDialog();
         }
+
+        private void FrmMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void resultadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Relatorio.FrmResultado fr = new Relatorio.FrmResultado();
+            fr.ShowDialog();
+        }
+
+        private void FrmMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

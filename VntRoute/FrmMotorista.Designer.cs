@@ -55,11 +55,18 @@
             this.textBoxEndereco = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBoxPesquisa = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxPesquisa);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.textBoxComissao);
             this.groupBox1.Controls.Add(this.label10);
@@ -87,7 +94,7 @@
             this.groupBox1.Controls.Add(this.textBoxNome);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 412);
+            this.groupBox1.Size = new System.Drawing.Size(776, 460);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro Motoristas";
@@ -211,7 +218,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.Transparent;
-            this.btnExcluir.Location = new System.Drawing.Point(668, 367);
+            this.btnExcluir.Location = new System.Drawing.Point(671, 240);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(93, 30);
             this.btnExcluir.TabIndex = 13;
@@ -226,7 +233,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.Location = new System.Drawing.Point(569, 367);
+            this.btnCancelar.Location = new System.Drawing.Point(572, 240);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 30);
             this.btnCancelar.TabIndex = 12;
@@ -240,7 +247,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSalvar.Location = new System.Drawing.Point(470, 367);
+            this.btnSalvar.Location = new System.Drawing.Point(473, 240);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(93, 30);
             this.btnSalvar.TabIndex = 11;
@@ -311,12 +318,38 @@
             this.textBoxNome.Size = new System.Drawing.Size(211, 20);
             this.textBoxNome.TabIndex = 2;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(22, 310);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(742, 144);
+            this.dataGridView1.TabIndex = 32;
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
+            // 
+            // textBoxPesquisa
+            // 
+            this.textBoxPesquisa.Location = new System.Drawing.Point(77, 284);
+            this.textBoxPesquisa.Name = "textBoxPesquisa";
+            this.textBoxPesquisa.Size = new System.Drawing.Size(448, 20);
+            this.textBoxPesquisa.TabIndex = 34;
+            this.textBoxPesquisa.TextChanged += new System.EventHandler(this.textBoxPesquisa_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(21, 287);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(50, 13);
+            this.label12.TabIndex = 33;
+            this.label12.Text = "Pesquisa";
+            // 
             // FrmMotorista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 484);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMotorista";
@@ -324,6 +357,7 @@
             this.Load += new System.EventHandler(this.FrmMotorista_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -356,5 +390,8 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxComissao;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBoxPesquisa;
+        private System.Windows.Forms.Label label12;
     }
 }
